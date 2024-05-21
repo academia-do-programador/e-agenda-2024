@@ -35,6 +35,10 @@ namespace eAgenda.WinApp.ModuloContato
             repositorioContato.Cadastrar(novoContato);
 
             CarregarContatos();
+
+            TelaPrincipalForm
+                .Instancia
+                .AtualizarRodape($"O registro \"{novoContato.Nome}\" foi criado com sucesso!");
         }
 
         public override void Editar()
@@ -55,6 +59,10 @@ namespace eAgenda.WinApp.ModuloContato
             repositorioContato.Editar(contatoSelecionado.Id, contatoEditado);
 
             CarregarContatos();
+
+            TelaPrincipalForm
+                .Instancia
+                .AtualizarRodape($"O registro \"{contatoEditado.Nome}\" foi editado com sucesso!");
         }
 
         public override void Excluir()
@@ -74,6 +82,10 @@ namespace eAgenda.WinApp.ModuloContato
             repositorioContato.Excluir(contatoSelecionado.Id);
 
             CarregarContatos();
+
+            TelaPrincipalForm
+                .Instancia
+                .AtualizarRodape($"O registro \"{contatoSelecionado.Nome}\" foi excluído com sucesso!");
         }
 
         private void CarregarContatos()

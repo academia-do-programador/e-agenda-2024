@@ -9,12 +9,21 @@ namespace eAgenda.WinApp
 
         RepositorioContato repositorioContato;
 
+        public static TelaPrincipalForm Instancia { get; private set; }
+
         public TelaPrincipalForm()
         {
             InitializeComponent();
             lblTipoCadastro.Text = string.Empty;
 
             repositorioContato = new RepositorioContato();
+
+            Instancia = this;
+        }
+
+        public void AtualizarRodape(string texto)
+        {
+            statusLabelPrincipal.Text = texto;
         }
 
         private void contatosMenuItem_Click(object sender, EventArgs e)
@@ -29,7 +38,6 @@ namespace eAgenda.WinApp
 
         private void compromissosMenuItem_Click(object sender, EventArgs e)
         {
-
         }
 
         private void btnAdicionar_Click(object sender, EventArgs e)

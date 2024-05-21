@@ -34,6 +34,15 @@
             string empresa = txtEmpresa.Text;
 
             contato = new Contato(nome, telefone, email, empresa, cargo);
+
+            List<string> erros = contato.Validar();
+
+            if (erros.Count > 0)
+            {
+                TelaPrincipalForm.Instancia.AtualizarRodape(erros[0]);
+
+                DialogResult = DialogResult.None;
+            }
         }
     }
 }
