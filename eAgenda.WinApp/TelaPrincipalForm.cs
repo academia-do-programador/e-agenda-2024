@@ -37,6 +37,11 @@ namespace eAgenda.WinApp
             controlador.Adicionar();
         }
 
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            controlador.Editar();
+        }
+
         private void ConfigurarToolTips(ControladorBase controladorSelecionado)
         {
             btnAdicionar.ToolTipText = controladorSelecionado.ToolTipAdicionar;

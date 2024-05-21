@@ -26,14 +26,35 @@ namespace eAgenda.WinApp.ModuloContato
 
             DialogResult resultado = telaContato.ShowDialog();
 
-            if (resultado == DialogResult.OK)
-            {
-                Contato novoContato = telaContato.Contato;
+            // guardas = bloquear momentos em que a aplicação toma um "caminho triste"
+            if (resultado != DialogResult.OK)
+                return;
 
-                repositorioContato.Cadastrar(novoContato);
+            Contato novoContato = telaContato.Contato;
 
-                CarregarContatos();
-            }
+            repositorioContato.Cadastrar(novoContato);
+
+            CarregarContatos();
+        }
+
+        public override void Editar()
+        {
+            TelaContatoForm telaContato = new TelaContatoForm();
+
+            Contato contatoSelecionado = listagemContato.ObterRegistroSelecionado();
+
+            telaContato.Contato = contatoSelecionado;
+
+            DialogResult resultado = telaContato.ShowDialog();
+
+            if (resultado != DialogResult.OK)
+                return;
+
+            Contato contatoEditado = telaContato.Contato;
+
+            repositorioContato.Editar(contatoSelecionado.Id, contatoEditado);
+
+            CarregarContatos();
         }
 
         private void CarregarContatos()

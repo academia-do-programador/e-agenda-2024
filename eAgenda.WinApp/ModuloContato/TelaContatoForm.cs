@@ -3,7 +3,22 @@
     public partial class TelaContatoForm : Form
     {
         private Contato contato;
-        public Contato Contato { get { return contato; } }
+        public Contato Contato
+        {
+            set
+            {
+                txtId.Text = value.Id.ToString();
+                txtNome.Text = value.Nome;
+                txtEmail.Text = value.Email;
+                txtTelefone.Text = value.Telefone;
+                txtCargo.Text = value.Cargo;
+                txtEmpresa.Text = value.Empresa;
+            }
+            get
+            {
+                return contato;
+            }
+        }
 
         public TelaContatoForm()
         {
