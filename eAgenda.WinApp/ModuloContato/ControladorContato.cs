@@ -57,6 +57,25 @@ namespace eAgenda.WinApp.ModuloContato
             CarregarContatos();
         }
 
+        public override void Excluir()
+        {
+            Contato contatoSelecionado = listagemContato.ObterRegistroSelecionado();
+
+            DialogResult resposta = MessageBox.Show(
+                $"Você deseja realmente excluir o registro \"{contatoSelecionado.Nome}\"?",
+                "Confirmar Exclusão",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning
+            );
+
+            if (resposta != DialogResult.Yes)
+                return;
+
+            repositorioContato.Excluir(contatoSelecionado.Id);
+
+            CarregarContatos();
+        }
+
         private void CarregarContatos()
         {
             List<Contato> contatos = repositorioContato.SelecionarTodos();

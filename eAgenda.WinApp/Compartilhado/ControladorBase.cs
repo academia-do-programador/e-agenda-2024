@@ -12,5 +12,6 @@
 
         public abstract void Adicionar();
         public abstract void Editar();
+        public abstract void Excluir();
     }
 }
