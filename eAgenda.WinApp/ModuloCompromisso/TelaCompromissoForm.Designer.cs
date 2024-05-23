@@ -159,10 +159,12 @@
             checkMarcarContato.TabIndex = 3;
             checkMarcarContato.Text = "Deseja marcar um contato?";
             checkMarcarContato.UseVisualStyleBackColor = true;
+            checkMarcarContato.CheckedChanged += checkMarcarContato_CheckedChanged;
             // 
             // cmbContatos
             // 
             cmbContatos.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbContatos.Enabled = false;
             cmbContatos.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             cmbContatos.FormattingEnabled = true;
             cmbContatos.Items.AddRange(new object[] { "Rech", "Tiago" });
@@ -182,6 +184,7 @@
             rdbRemoto.TabStop = true;
             rdbRemoto.Text = "Remoto:";
             rdbRemoto.UseVisualStyleBackColor = true;
+            rdbRemoto.CheckedChanged += rdbRemoto_CheckedChanged;
             // 
             // rdbPresencial
             // 
@@ -193,6 +196,7 @@
             rdbPresencial.TabStop = true;
             rdbPresencial.Text = "Presencial:";
             rdbPresencial.UseVisualStyleBackColor = true;
+            rdbPresencial.CheckedChanged += rdbPresencial_CheckedChanged;
             // 
             // txtLink
             // 
@@ -203,6 +207,7 @@
             // 
             // txtLocal
             // 
+            txtLocal.Enabled = false;
             txtLocal.Location = new Point(120, 69);
             txtLocal.Name = "txtLocal";
             txtLocal.Size = new Size(213, 27);
