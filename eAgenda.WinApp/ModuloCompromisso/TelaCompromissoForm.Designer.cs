@@ -167,7 +167,6 @@
             cmbContatos.Enabled = false;
             cmbContatos.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             cmbContatos.FormattingEnabled = true;
-            cmbContatos.Items.AddRange(new object[] { "Rech", "Tiago" });
             cmbContatos.Location = new Point(65, 214);
             cmbContatos.Name = "cmbContatos";
             cmbContatos.Size = new Size(164, 28);
@@ -237,6 +236,7 @@
             btnGravar.TabIndex = 8;
             btnGravar.Text = "Gravar";
             btnGravar.UseVisualStyleBackColor = true;
+            btnGravar.Click += btnGravar_Click;
             // 
             // btnCancelar
             // 
