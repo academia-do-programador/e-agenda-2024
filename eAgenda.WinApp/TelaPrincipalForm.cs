@@ -28,7 +28,7 @@ namespace eAgenda.WinApp
             TimeSpan horaInicio = new TimeSpan(09, 00, 00);
             TimeSpan horaTermino = new TimeSpan(10, 00, 00);
 
-            Compromisso compromisso = new Compromisso("Reunião", "", "www.discord.com", data, horaInicio, horaTermino, contato);
+            Compromisso compromisso = new Compromisso("Reunião", "MidiLages", "www.discord.com", data, horaInicio, horaTermino, contato);
             repositorioCompromisso.Cadastrar(compromisso);
 
             Instancia = this;

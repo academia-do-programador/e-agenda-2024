@@ -16,6 +16,20 @@ namespace eAgenda.WinApp.ModuloCompromisso
         public string Local { get; set; }
         public string Link { get; set; }
 
+        public TipoCompromissoEnum TipoCompromisso
+        {
+            get
+            {
+                TipoCompromissoEnum tipoSelecionado;
+
+                if (Local.Length > 0)
+                    tipoSelecionado = TipoCompromissoEnum.Presencial;
+                else
+                    tipoSelecionado = TipoCompromissoEnum.Remoto;
+
+                return tipoSelecionado;
+            }
+        }
 
         public Compromisso(
             string assunto,
@@ -77,7 +91,7 @@ namespace eAgenda.WinApp.ModuloCompromisso
 
             string nomeContato = Contato == null ? string.Empty : Contato.Nome;
 
-            return $"Id: {Id}, Assunto: {Assunto}, Data: {Data.ToShortDateString()}, Início: {HoraInicio.ToString(@"hh\:mm")}, Término: {HoraTermino.ToString(@"hh\:mm")}, Contato: {nomeContato}";
+            return $"Id: {Id}, Assunto: {Assunto}, Data: {Data.ToShortDateString()}, Início: {HoraInicio.ToString(@"hh\:mm")}, Término: {HoraTermino.ToString(@"hh\:mm")}, Contato: {nomeContato}, Tipo: {TipoCompromisso.ToString()}";
         }
     }
 }
