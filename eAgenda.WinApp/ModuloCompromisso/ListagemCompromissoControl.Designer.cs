@@ -34,8 +34,9 @@
             // listCompromissos
             // 
             listCompromissos.Dock = DockStyle.Fill;
+            listCompromissos.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             listCompromissos.FormattingEnabled = true;
-            listCompromissos.ItemHeight = 15;
+            listCompromissos.ItemHeight = 20;
             listCompromissos.Location = new Point(0, 0);
             listCompromissos.Name = "listCompromissos";
             listCompromissos.Size = new Size(469, 297);

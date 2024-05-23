@@ -24,6 +24,13 @@ namespace eAgenda.WinApp
             Contato contato = new Contato("Alexandre Rech", "49 985052123", "rech@gmail.com", "Academia do Programador", "CEO");
             repositorioContato.Cadastrar(contato);
 
+            DateTime data = DateTime.Today.AddDays(-3);
+            TimeSpan horaInicio = new TimeSpan(09, 00, 00);
+            TimeSpan horaTermino = new TimeSpan(10, 00, 00);
+
+            Compromisso compromisso = new Compromisso("Reunião", "", "www.discord.com", data, horaInicio, horaTermino, contato);
+            repositorioCompromisso.Cadastrar(compromisso);
+
             Instancia = this;
         }
 
