@@ -78,7 +78,25 @@ namespace eAgenda.WinApp.ModuloCompromisso
 
         public override void Excluir()
         {
-            throw new NotImplementedException();
+            Compromisso compromissoSelecionado = listagemCompromisso.ObterRegistroSelecionado();
+
+            DialogResult resultado = MessageBox.Show(
+                $"Você deseja realmente excluir o registro \"{compromissoSelecionado.Assunto}\"?",
+                "Confirmar Exclusão",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning
+            );
+
+            if (resultado != DialogResult.Yes)
+                return;
+
+            repositorioCompromisso.Excluir(compromissoSelecionado.Id);
+
+            CarregarCompromissos();
+
+            TelaPrincipalForm
+               .Instancia
+               .AtualizarRodape($"O registro \"{compromissoSelecionado.Assunto}\" foi excluído com sucesso!");
         }
 
         public override UserControl ObterListagem()
