@@ -2,7 +2,7 @@
 {
     public partial class TelaFiltroCompromissoForm : Form
     {
-        public TipoFiltroCompromissoEnum TipoEscolhido { get; private set; }
+        public TipoFiltroCompromissoEnum FiltroSelecionado { get; private set; }
 
         public TelaFiltroCompromissoForm()
         {
@@ -12,13 +12,13 @@
         private void btnGravar_Click(object sender, EventArgs e)
         {
             if (rdbTodosCompromissos.Checked)
-                TipoEscolhido = TipoFiltroCompromissoEnum.Todos;
+                FiltroSelecionado = TipoFiltroCompromissoEnum.Todos;
 
             else if (rdbCompromissosPassados.Checked)
-                TipoEscolhido = TipoFiltroCompromissoEnum.Passados;
+                FiltroSelecionado = TipoFiltroCompromissoEnum.Passados;
 
             else if (rdbCompromissosFuturos.Checked)
-                TipoEscolhido = TipoFiltroCompromissoEnum.Futuros;
+                FiltroSelecionado = TipoFiltroCompromissoEnum.Futuros;
         }
     }
 }
