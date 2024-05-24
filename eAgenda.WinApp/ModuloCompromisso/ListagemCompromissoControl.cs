@@ -17,7 +17,10 @@
 
         public Compromisso ObterRegistroSelecionado()
         {
-            return null;
+            if (listCompromissos.SelectedItem == null)
+                return null;
+
+            return (Compromisso)listCompromissos.SelectedItem;
         }
     }
 }

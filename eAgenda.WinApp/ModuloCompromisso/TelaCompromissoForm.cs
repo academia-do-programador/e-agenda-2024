@@ -8,6 +8,30 @@ namespace eAgenda.WinApp.ModuloCompromisso
         private Compromisso compromisso;
         public Compromisso Compromisso
         {
+            set
+            {
+                txtId.Text = value.Id.ToString();
+                txtAssunto.Text = value.Assunto;
+                txtData.Value = value.Data;
+                txtHoraInicio.Value = value.Data.Date + value.HoraInicio;
+                txtHoraTermino.Value = value.Data.Date + value.HoraTermino;
+
+                checkMarcarContato.Checked = value.Contato != null;
+
+                cmbContatos.Enabled = value.Contato != null;
+                cmbContatos.SelectedItem = value.Contato;
+
+                if (value.TipoCompromisso == TipoCompromissoEnum.Presencial)
+                {
+                    rdbPresencial.Checked = true;
+                    txtLocal.Text = value.Local;
+                }
+                else
+                {
+                    rdbRemoto.Checked = true;
+                    txtLink.Text = value.Link;
+                }
+            }
             get
             {
                 return compromisso;

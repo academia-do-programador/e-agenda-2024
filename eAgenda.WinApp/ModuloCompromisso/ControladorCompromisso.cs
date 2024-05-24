@@ -50,7 +50,30 @@ namespace eAgenda.WinApp.ModuloCompromisso
 
         public override void Editar()
         {
-            throw new NotImplementedException();
+            TelaCompromissoForm telaCompromisso = new TelaCompromissoForm();
+
+            List<Contato> contatosCadastrados = repositorioContato.SelecionarTodos();
+
+            telaCompromisso.CarregarContatos(contatosCadastrados);
+
+            Compromisso compromissoSelecionado = listagemCompromisso.ObterRegistroSelecionado();
+
+            telaCompromisso.Compromisso = compromissoSelecionado;
+
+            DialogResult resultado = telaCompromisso.ShowDialog();
+
+            if (resultado != DialogResult.OK)
+                return;
+
+            Compromisso compromissoEditado = telaCompromisso.Compromisso;
+
+            repositorioCompromisso.Editar(compromissoSelecionado.Id, compromissoEditado);
+
+            CarregarCompromissos();
+
+            TelaPrincipalForm
+                .Instancia
+                .AtualizarRodape($"O registro \"{compromissoEditado.Assunto}\" foi editado com sucesso!");
         }
 
         public override void Excluir()
