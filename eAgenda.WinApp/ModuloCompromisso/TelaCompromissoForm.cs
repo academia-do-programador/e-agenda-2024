@@ -1,4 +1,5 @@
-﻿using eAgenda.WinApp.ModuloContato;
+﻿using eAgenda.WinApp.Compartilhado;
+using eAgenda.WinApp.ModuloContato;
 
 namespace eAgenda.WinApp.ModuloCompromisso
 {
@@ -41,6 +42,7 @@ namespace eAgenda.WinApp.ModuloCompromisso
         public TelaCompromissoForm()
         {
             InitializeComponent();
+            this.ConfigurarDialog();
         }
 
         public void CarregarContatos(List<Contato> contatos)

@@ -20,5 +20,37 @@
             else if (rdbCompromissosFuturos.Checked)
                 FiltroSelecionado = TipoFiltroCompromissoEnum.Futuros;
         }
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rdbCompromissosPeriodo.Checked)
+            {
+                lblInicioPeriodo.Enabled = true;
+                lblInicioPeriodo.Visible = true;
+
+                txtInicioPeriodo.Enabled = true;
+                txtInicioPeriodo.Visible = true;
+
+                lblTerminoPeriodo.Enabled = true;
+                lblTerminoPeriodo.Visible = true;
+
+                txtTerminoPeriodo.Enabled = true;
+                txtTerminoPeriodo.Visible = true;
+            }
+            else
+            {
+                lblInicioPeriodo.Enabled = false;
+                lblInicioPeriodo.Visible = false;
+
+                txtInicioPeriodo.Enabled = false;
+                txtInicioPeriodo.Visible = false;
+
+                lblTerminoPeriodo.Enabled = false;
+                lblTerminoPeriodo.Visible = false;
+
+                txtTerminoPeriodo.Enabled = false;
+                txtTerminoPeriodo.Visible = false;
+            }
+        }
     }
 }

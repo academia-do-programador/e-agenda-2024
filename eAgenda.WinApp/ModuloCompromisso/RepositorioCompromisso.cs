@@ -6,28 +6,12 @@ namespace eAgenda.WinApp.ModuloCompromisso
     {
         public List<Compromisso> SelecionarCompromissosFuturos()
         {
-            List<Compromisso> compromissosFuturos = new List<Compromisso>();
-
-            foreach (Compromisso compromisso in registros)
-            {
-                if (compromisso.Data >= DateTime.Today)
-                    compromissosFuturos.Add(compromisso);
-            }
-
-            return compromissosFuturos;
+            return registros.FindAll(c => c.Data >= DateTime.Today);
         }
 
         public List<Compromisso> SelecionarCompromissosPassados()
         {
-            List<Compromisso> compromissosPassados = new List<Compromisso>();
-
-            foreach (Compromisso compromisso in registros)
-            {
-                if (compromisso.Data < DateTime.Today)
-                    compromissosPassados.Add(compromisso);
-            }
-
-            return compromissosPassados;
+            return registros.FindAll(c => c.Data < DateTime.Today);
         }
     }
 }
