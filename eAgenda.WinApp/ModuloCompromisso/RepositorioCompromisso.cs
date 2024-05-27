@@ -32,7 +32,15 @@ namespace eAgenda.WinApp.ModuloCompromisso
 
         public List<Compromisso> SelecionarCompromissosPorPeriodo(DateTime dataInicio, DateTime dataTermino)
         {
-            throw new NotImplementedException();
+            List<Compromisso> compromissosDoPeriodo = new List<Compromisso>();
+
+            foreach (Compromisso c in registros)
+            {
+                if (c.Data >= dataInicio && c.Data <= dataTermino)
+                    compromissosDoPeriodo.Add(c);
+            }
+
+            return compromissosDoPeriodo;
         }
     }
 }

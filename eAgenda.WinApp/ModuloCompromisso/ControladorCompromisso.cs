@@ -147,7 +147,8 @@ namespace eAgenda.WinApp.ModuloCompromisso
                 DateTime dataInicio = telaFiltro.InicioPeriodo;
                 DateTime dataTermino = telaFiltro.TerminoPeriodo;
 
-                compromissosSelecionados = repositorioCompromisso.SelecionarCompromissosPorPeriodo(dataInicio, dataTermino);
+                compromissosSelecionados =
+                    repositorioCompromisso.SelecionarCompromissosPorPeriodo(dataInicio, dataTermino);
             }
 
             else
