@@ -29,5 +29,10 @@ namespace eAgenda.WinApp.ModuloCompromisso
 
             return compromissosPassados;
         }
+
+        public List<Compromisso> SelecionarCompromissosPorPeriodo(DateTime dataInicio, DateTime dataTermino)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

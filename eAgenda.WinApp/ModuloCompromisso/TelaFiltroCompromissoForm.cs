@@ -4,6 +4,22 @@
     {
         public TipoFiltroCompromissoEnum FiltroSelecionado { get; private set; }
 
+        public DateTime InicioPeriodo
+        {
+            get
+            {
+                return txtInicioPeriodo.Value;
+            }
+        }
+
+        public DateTime TerminoPeriodo
+        {
+            get
+            {
+                return txtTerminoPeriodo.Value;
+            }
+        }
+
         public TelaFiltroCompromissoForm()
         {
             InitializeComponent();
@@ -19,6 +35,23 @@
 
             else if (rdbCompromissosFuturos.Checked)
                 FiltroSelecionado = TipoFiltroCompromissoEnum.Futuros;
+
+            else if (rdbCompromissosPeriodo.Checked)
+                FiltroSelecionado = TipoFiltroCompromissoEnum.Periodo;
+        }
+
+        private void rdbCompromissosPeriodo_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rdbCompromissosPeriodo.Checked)
+            {
+                txtInicioPeriodo.Enabled = true;
+                txtTerminoPeriodo.Enabled = true;
+            }
+            else
+            {
+                txtInicioPeriodo.Enabled = false;
+                txtTerminoPeriodo.Enabled = false;
+            }
         }
     }
 }

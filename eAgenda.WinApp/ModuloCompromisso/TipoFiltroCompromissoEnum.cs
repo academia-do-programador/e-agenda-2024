@@ -4,6 +4,7 @@
     {
         Todos,
         Passados,
-        Futuros
+        Futuros,
+        Periodo,
     }
 }
