@@ -1,4 +1,4 @@
-# Clube da Leitura
+# e-Agenda
 
 ## Projeto
 
@@ -30,7 +30,20 @@ Para isto, será necessário fazer uma gestão de contatos inteligente e JP pretend
 	- link (caso remoto)
 	- contato (opcional)
 
+3. O cadastro do **Tarefa** consiste de:
+	- título
+	- prioridade
+	- data de criação
+	- data de conclusão
+	- itens
+	- percentual concluído
+
+	3.1. Item da Tarefa
+	- título
+	- concluído (status)
+	- tarefa
 ---
+
 ## Requisitos
 
 - .NET SDK (recomendado .NET 8.0 ou superior) para compilação e execução do projeto.
