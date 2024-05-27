@@ -15,40 +15,19 @@
 
         public bool Editar(int id, T novaEntidade)
         {
-            novaEntidade.Id = id;
+            T registro = SelecionarPorId(id);
 
-            foreach (T entidade in registros)
-            {
-                if (entidade == null)
-                    continue;
+            if (registro == null)
+                return false;
 
-                else if (entidade.Id == id)
-                {
-                    entidade.AtualizarRegistro(novaEntidade);
+            registro.AtualizarRegistro(novaEntidade);
 
-                    return true;
-                }
-            }
-
-            return false;
+            return true;
         }
 
         public bool Excluir(int id)
         {
-            foreach (T entidade in registros)
-            {
-                if (entidade == null)
-                    continue;
-
-                else if (entidade.Id == id)
-                {
-                    registros.Remove(entidade);
-
-                    return true;
-                }
-            }
-
-            return false;
+            return registros.Remove(SelecionarPorId(id));
         }
 
         public List<T> SelecionarTodos()
@@ -58,30 +37,12 @@
 
         public T SelecionarPorId(int id)
         {
-            foreach (T e in registros)
-            {
-                if (e == null)
-                    continue;
-
-                else if (e.Id == id)
-                    return e;
-            }
-
-            return null;
+            return registros.Find(x => x.Id == id);
         }
 
         public bool Existe(int id)
         {
-            foreach (T e in registros)
-            {
-                if (e == null)
-                    continue;
-
-                else if (e.Id == id)
-                    return true;
-            }
-
-            return false;
+            return registros.Any(x => x.Id == id);
         }
     }
 }
