@@ -1,4 +1,6 @@
-﻿namespace eAgenda.WinApp.ModuloCompromisso
+﻿using eAgenda.WinApp.Compartilhado;
+
+namespace eAgenda.WinApp.ModuloCompromisso
 {
     public partial class TabelaCompromissoControl : UserControl
     {
@@ -8,28 +10,8 @@
 
             grid.Columns.AddRange(ObterColunas());
 
-            ConfigurarGridSomenteLeitura();
-        }
-
-        private void ConfigurarGridSomenteLeitura()
-        {
-            grid.AllowUserToAddRows = false;
-            grid.AllowUserToDeleteRows = false;
-
-            grid.BorderStyle = BorderStyle.None;
-
-            grid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-
-            grid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-
-            grid.MultiSelect = false;
-            grid.ReadOnly = true;
-
-            grid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            grid.AutoGenerateColumns = false;
-
-            grid.AllowUserToResizeRows = false;
-            grid.RowHeadersVisible = false;
+            grid.ConfigurarGridSomenteLeitura();
+            grid.ConfigurarGridZebrado();
         }
 
         public void AtualizarRegistros(List<Compromisso> compromissos)

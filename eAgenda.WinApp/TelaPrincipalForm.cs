@@ -107,9 +107,9 @@ namespace eAgenda.WinApp
         {
             List<Contato> contatos = new List<Contato>()
             {
-                new("Alexandre Rech", "49 99833-2123", "rech@gmail.com", "Academia do Programador", "CEO"),
-                new("Tiago Santini", "49 98505-6251", "tiago@gmail.com", "Academia do Programador", "Professor"),
-                new("José Pedro", "49 98404-6020", "jp@gmail.com", "Cronos Soluções de Informática", "Vendedor")
+                new("alexandre rech", "49 99833-2123", "rech@gmail.com", "Academia do Programador", "CEO"),
+                new("Tiago santini", "49 98505-6251", "tiago@gmail.com", "Academia do Programador", "Professor"),
+                new("JOSÉ PEDRO", "49 98404-6020", "jp@gmail.com", "Cronos Soluções de Informática", "Vendedor")
             };
 
             repositorioContato.CadastrarVarios(contatos);
