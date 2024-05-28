@@ -5,7 +5,7 @@ namespace eAgenda.WinApp.ModuloCompromisso
 {
     public class ControladorCompromisso : ControladorBase, IControladorFiltravel
     {
-        private ListagemCompromissoControl listagemCompromisso;
+        private TabelaCompromissoControl tabelaCompromisso;
 
         private RepositorioCompromisso repositorioCompromisso;
         private RepositorioContato repositorioContato;
@@ -58,7 +58,7 @@ namespace eAgenda.WinApp.ModuloCompromisso
 
             telaCompromisso.CarregarContatos(contatosCadastrados);
 
-            Compromisso compromissoSelecionado = listagemCompromisso.ObterRegistroSelecionado();
+            Compromisso compromissoSelecionado = tabelaCompromisso.ObterRegistroSelecionado();
 
             if (compromissoSelecionado == null)
             {
@@ -91,7 +91,7 @@ namespace eAgenda.WinApp.ModuloCompromisso
 
         public override void Excluir()
         {
-            Compromisso compromissoSelecionado = listagemCompromisso.ObterRegistroSelecionado();
+            Compromisso compromissoSelecionado = tabelaCompromisso.ObterRegistroSelecionado();
 
             if (compromissoSelecionado == null)
             {
@@ -154,26 +154,26 @@ namespace eAgenda.WinApp.ModuloCompromisso
             else
                 compromissosSelecionados = repositorioCompromisso.SelecionarTodos();
 
-            listagemCompromisso.AtualizarRegistros(compromissosSelecionados);
+            tabelaCompromisso.AtualizarRegistros(compromissosSelecionados);
 
             TelaPrincipalForm.Instancia.AtualizarRodape($"Visualizando {compromissosSelecionados.Count} registros...");
         }
 
         public override UserControl ObterListagem()
         {
-            if (listagemCompromisso == null)
-                listagemCompromisso = new ListagemCompromissoControl();
+            if (tabelaCompromisso == null)
+                tabelaCompromisso = new TabelaCompromissoControl();
 
             CarregarCompromissos();
 
-            return listagemCompromisso;
+            return tabelaCompromisso;
         }
 
         private void CarregarCompromissos()
         {
             List<Compromisso> compromissos = repositorioCompromisso.SelecionarTodos();
 
-            listagemCompromisso.AtualizarRegistros(compromissos);
+            tabelaCompromisso.AtualizarRegistros(compromissos);
         }
     }
 }
