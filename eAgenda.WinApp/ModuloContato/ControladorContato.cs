@@ -5,7 +5,7 @@ namespace eAgenda.WinApp.ModuloContato
     public class ControladorContato : ControladorBase
     {
         private RepositorioContato repositorioContato;
-        private ListagemContatoControl listagemContato;
+        private TabelaContatoControl tabelaContato;
 
         public ControladorContato(RepositorioContato repositorio)
         {
@@ -45,7 +45,7 @@ namespace eAgenda.WinApp.ModuloContato
         {
             TelaContatoForm telaContato = new TelaContatoForm();
 
-            Contato contatoSelecionado = listagemContato.ObterRegistroSelecionado();
+            Contato contatoSelecionado = tabelaContato.ObterRegistroSelecionado();
 
             if (contatoSelecionado == null)
             {
@@ -78,7 +78,7 @@ namespace eAgenda.WinApp.ModuloContato
 
         public override void Excluir()
         {
-            Contato contatoSelecionado = listagemContato.ObterRegistroSelecionado();
+            Contato contatoSelecionado = tabelaContato.ObterRegistroSelecionado();
 
             if (contatoSelecionado == null)
             {
@@ -114,17 +114,17 @@ namespace eAgenda.WinApp.ModuloContato
         {
             List<Contato> contatos = repositorioContato.SelecionarTodos();
 
-            listagemContato.AtualizarRegistros(contatos);
+            tabelaContato.AtualizarRegistros(contatos);
         }
 
         public override UserControl ObterListagem()
         {
-            if (listagemContato == null)
-                listagemContato = new ListagemContatoControl();
+            if (tabelaContato == null)
+                tabelaContato = new TabelaContatoControl();
 
             CarregarContatos();
 
-            return listagemContato;
+            return tabelaContato;
         }
     }
 }
