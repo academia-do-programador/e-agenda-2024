@@ -28,9 +28,9 @@ namespace eAgenda.WinApp.ModuloCompromisso
                     c.Contato);
         }
 
-        public Compromisso ObterRegistroSelecionado()
+        public int ObterRegistroSelecionado()
         {
-            return null;
+            return grid.SelecionarId();
         }
 
         private DataGridViewColumn[] ObterColunas()

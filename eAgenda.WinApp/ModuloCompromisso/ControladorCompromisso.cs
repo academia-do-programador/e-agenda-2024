@@ -58,7 +58,10 @@ namespace eAgenda.WinApp.ModuloCompromisso
 
             telaCompromisso.CarregarContatos(contatosCadastrados);
 
-            Compromisso compromissoSelecionado = tabelaCompromisso.ObterRegistroSelecionado();
+            int idSelecionado = tabelaCompromisso.ObterRegistroSelecionado();
+
+            Compromisso compromissoSelecionado =
+                repositorioCompromisso.SelecionarPorId(idSelecionado);
 
             if (compromissoSelecionado == null)
             {
@@ -91,7 +94,10 @@ namespace eAgenda.WinApp.ModuloCompromisso
 
         public override void Excluir()
         {
-            Compromisso compromissoSelecionado = tabelaCompromisso.ObterRegistroSelecionado();
+            int idSelecionado = tabelaCompromisso.ObterRegistroSelecionado();
+
+            Compromisso compromissoSelecionado =
+                repositorioCompromisso.SelecionarPorId(idSelecionado);
 
             if (compromissoSelecionado == null)
             {

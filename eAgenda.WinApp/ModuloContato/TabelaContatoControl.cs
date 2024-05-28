@@ -23,9 +23,9 @@ namespace eAgenda.WinApp.ModuloContato
                 grid.Rows.Add(c.Id, c.Nome.ToTitleCase(), c.Telefone, c.Email, c.Empresa, c.Cargo);
         }
 
-        public Contato ObterRegistroSelecionado()
+        public int ObterRegistroSelecionado()
         {
-            return null;
+            return grid.SelecionarId();
         }
 
         private DataGridViewColumn[] ObterColunas()
