@@ -1,4 +1,5 @@
 ﻿using eAgenda.ConsoleApp.Compartilhado;
+using eAgenda.WinApp.Compartilhado;
 
 namespace eAgenda.WinApp.ModuloContato
 {
@@ -54,7 +55,7 @@ namespace eAgenda.WinApp.ModuloContato
 
         public override string ToString()
         {
-            return Nome;
+            return Nome.ToTitleCase();
         }
     }
 }

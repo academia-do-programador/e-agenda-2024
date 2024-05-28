@@ -19,7 +19,13 @@ namespace eAgenda.WinApp.ModuloCompromisso
             grid.Rows.Clear();
 
             foreach (Compromisso c in compromissos)
-                grid.Rows.Add(c.Id, c.Assunto, c.Data, c.HoraInicio, c.HoraTermino, c.Contato);
+                grid.Rows.Add(
+                    c.Id,
+                    c.Assunto,
+                    c.Data,
+                    c.HoraInicio.ToString(@"hh\:mm"),
+                    c.HoraTermino.ToString(@"hh\:mm"),
+                    c.Contato);
         }
 
         public Compromisso ObterRegistroSelecionado()

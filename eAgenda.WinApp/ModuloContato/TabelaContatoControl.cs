@@ -9,13 +9,14 @@ namespace eAgenda.WinApp.ModuloContato
         {
             InitializeComponent();
 
+            grid.Columns.AddRange(ObterColunas());
+
             grid.ConfigurarGridSomenteLeitura();
             grid.ConfigurarGridZebrado();
         }
 
         public void AtualizarRegistros(List<Contato> contatos)
         {
-            // linhas
             grid.Rows.Clear();
 
             foreach (Contato c in contatos)
@@ -25,6 +26,19 @@ namespace eAgenda.WinApp.ModuloContato
         public Contato ObterRegistroSelecionado()
         {
             return null;
+        }
+
+        private DataGridViewColumn[] ObterColunas()
+        {
+            return new DataGridViewColumn[]
+                        {
+                new DataGridViewTextBoxColumn { DataPropertyName = "Id", HeaderText = "Id" },
+                new DataGridViewTextBoxColumn { DataPropertyName = "Nome", HeaderText = "Nome" },
+                new DataGridViewTextBoxColumn { DataPropertyName = "Telefone", HeaderText = "Telefone" },
+                new DataGridViewTextBoxColumn { DataPropertyName = "Email", HeaderText = "Email" },
+                new DataGridViewTextBoxColumn { DataPropertyName = "Empresa", HeaderText = "Empresa" },
+                new DataGridViewTextBoxColumn { DataPropertyName = "Cargo", HeaderText = "Cargo" },
+                        };
         }
     }
 }
