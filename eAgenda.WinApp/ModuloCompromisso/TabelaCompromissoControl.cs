@@ -22,7 +22,7 @@ namespace eAgenda.WinApp.ModuloCompromisso
                 grid.Rows.Add(
                     c.Id,
                     c.Assunto,
-                    c.Data,
+                    c.Data.ToShortDateString(),
                     c.HoraInicio.ToString(@"hh\:mm"),
                     c.HoraTermino.ToString(@"hh\:mm"),
                     c.Contato);
