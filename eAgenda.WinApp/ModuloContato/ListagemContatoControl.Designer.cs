@@ -34,9 +34,9 @@
             // listContatos
             // 
             listContatos.Dock = DockStyle.Fill;
-            listContatos.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            listContatos.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             listContatos.FormattingEnabled = true;
-            listContatos.ItemHeight = 17;
+            listContatos.ItemHeight = 20;
             listContatos.Location = new Point(0, 0);
             listContatos.Name = "listContatos";
             listContatos.Size = new Size(551, 323);
@@ -47,6 +47,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(listContatos);
+            Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Name = "ListagemContatoControl";
             Size = new Size(551, 323);
             ResumeLayout(false);

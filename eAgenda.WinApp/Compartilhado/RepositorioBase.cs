@@ -44,5 +44,14 @@
         {
             return registros.Any(x => x.Id == id);
         }
+
+        public void CadastrarVarios(List<T> registrosAdicionados)
+        {
+            foreach (T registro in registrosAdicionados)
+            {
+                registro.Id = contadorId++;
+                registros.Add(registro);
+            }
+        }
     }
 }
