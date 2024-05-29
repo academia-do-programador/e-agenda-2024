@@ -47,6 +47,13 @@ namespace eAgenda.WinApp
             ConfigurarTelaPrincipal(controlador);
         }
 
+        private void tarefasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            controlador = new ControladorTarefa(repositorioTarefa);
+
+            ConfigurarTelaPrincipal(controlador);
+        }
+
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
             controlador.Adicionar();
