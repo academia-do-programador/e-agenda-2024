@@ -15,7 +15,14 @@
             listTarefas.Items.Clear();
 
             foreach (Tarefa t in tarefas)
-                listTarefas.Items.Add(t.Titulo);
+            {
+                ListViewItem item = new ListViewItem(t.Id.ToString());
+
+                item.SubItems.Add(t.Titulo);
+                item.SubItems.Add(t.DataCriacao.ToShortDateString());
+
+                listTarefas.Items.Add(item);
+            }
         }
 
         private void ConfigurarColunas()
