@@ -2,7 +2,7 @@
 
 namespace eAgenda.WinApp.ModuloTarefa
 {
-    public class ControladorTarefa : ControladorBase
+    public class ControladorTarefa : ControladorBase, IControladorSubItens
     {
         private TabelaTarefaControl listTarefas;
 
@@ -15,6 +15,8 @@ namespace eAgenda.WinApp.ModuloTarefa
         public override string ToolTipEditar { get { return "Editar uma tarefa existente"; } }
 
         public override string ToolTipExcluir { get { return "Excluir uma tarefa existente"; } }
+
+        public string ToolTipAdicionarItens { get { return "Adicionar itens para uma tarefa"; } }
 
         public ControladorTarefa(RepositorioTarefa repositorioTarefa)
         {
@@ -116,6 +118,11 @@ namespace eAgenda.WinApp.ModuloTarefa
                 .AtualizarRodape($"O registro \"{tarefaSelecionada.Titulo}\" foi excluído com sucesso!");
         }
 
+        public void AdicionarItens()
+        {
+            throw new NotImplementedException();
+        }
+
         private void CarregarTarefas()
         {
             List<Tarefa> contatos = repositorioTarefa.SelecionarTodos();
@@ -132,5 +139,6 @@ namespace eAgenda.WinApp.ModuloTarefa
 
             return listTarefas;
         }
+
     }
 }

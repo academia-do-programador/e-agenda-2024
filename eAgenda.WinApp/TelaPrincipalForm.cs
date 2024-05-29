@@ -75,6 +75,12 @@ namespace eAgenda.WinApp
                 controladorFiltravel.Filtrar();
         }
 
+        private void btnAdicionarItens_Click(object sender, EventArgs e)
+        {
+            if (controlador is IControladorSubItens controladorSubItens)
+                controladorSubItens.AdicionarItens();
+        }
+
         private void ConfigurarTelaPrincipal(ControladorBase controladorSelecionado)
         {
             lblTipoCadastro.Text = "Cadastro de " + controladorSelecionado.TipoCadastro;
@@ -90,6 +96,7 @@ namespace eAgenda.WinApp
             btnExcluir.Enabled = controladorSelecionado is ControladorBase;
 
             btnFiltrar.Enabled = controladorSelecionado is IControladorFiltravel;
+            btnAdicionarItens.Enabled = controladorSelecionado is IControladorSubItens;
 
             ConfigurarToolTips(controladorSelecionado);
         }
@@ -102,6 +109,9 @@ namespace eAgenda.WinApp
 
             if (controladorSelecionado is IControladorFiltravel controladorFiltravel)
                 btnFiltrar.ToolTipText = controladorFiltravel.ToolTipFiltrar;
+
+            if (controlador is IControladorSubItens controladorSubItens)
+                btnAdicionarItens.ToolTipText = controladorSubItens.ToolTipAdicionarItens;
         }
 
         private void ConfigurarListagem(ControladorBase controladorSelecionado)

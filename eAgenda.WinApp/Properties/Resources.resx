@@ -124,10 +124,13 @@
   <data name="btnExcluir" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\btnExcluir.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="btnFiltrar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btnFiltrar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="btnEditar" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\btnEditar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="btnFiltrar" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\btnFiltrar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="btnAdicionarItens" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btnAdicionarItens.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
