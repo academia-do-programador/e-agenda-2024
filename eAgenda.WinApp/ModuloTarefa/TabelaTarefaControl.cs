@@ -41,6 +41,7 @@
                 }
             }
 
+            ConfigurarAparenciaColunas();
         }
 
         public int ObterIdSelecionado()
@@ -57,13 +58,20 @@
         {
             ColumnHeader[] colunas = new ColumnHeader[]
             {
-                new ColumnHeader() { Text = "Id", Width = 80 },
-                new ColumnHeader() { Text = "Título", Width = 200 },
-                new ColumnHeader() { Text = "Data de Criação", Width = 100 },
-                new ColumnHeader() { Text = "% Concluído", Width = 80, TextAlign = HorizontalAlignment.Right },
+                new ColumnHeader() { Text = "Id" },
+                new ColumnHeader() { Text = "Título" },
+                new ColumnHeader() { Text = "Data de Criação" },
+                new ColumnHeader() { Text = "% Concluído", TextAlign = HorizontalAlignment.Right },
             };
 
             listTarefas.Columns.AddRange(colunas);
+        }
+
+        private void ConfigurarAparenciaColunas()
+        {
+            listTarefas.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+
+            listTarefas.Columns[0].Width = 80;
         }
 
         private void ConfigurarListView()

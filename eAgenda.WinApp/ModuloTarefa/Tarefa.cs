@@ -20,7 +20,7 @@ namespace eAgenda.WinApp.ModuloTarefa
 
                 int qtdConcluidos = Itens.Count(i => i.Concluido);
 
-                decimal percentualBase = (qtdConcluidos / Itens.Count) * 100;
+                decimal percentualBase = (qtdConcluidos / (decimal)Itens.Count) * 100;
 
                 return Math.Round(percentualBase, 2);
             }
