@@ -26,7 +26,10 @@
 
                 foreach (Tarefa t in grupo)
                 {
-                    ListViewItem item = new ListViewItem(t.Id.ToString());
+                    ListViewItem item = new ListViewItem(t.Id.ToString())
+                    {
+                        Tag = t,
+                    };
 
                     item.SubItems.Add(t.Titulo);
                     item.SubItems.Add(t.DataCriacao.ToShortDateString());
@@ -37,6 +40,16 @@
                 }
             }
 
+        }
+
+        public int ObterIdSelecionado()
+        {
+            if (listTarefas.SelectedItems.Count == 0)
+                return -1;
+
+            var tarefaSelecionada = (Tarefa)listTarefas.SelectedItems[0].Tag;
+
+            return tarefaSelecionada.Id;
         }
 
         private void ConfigurarColunas()

@@ -3,7 +3,19 @@
     public partial class TelaTarefaForm : Form
     {
         private Tarefa tarefa;
-        public Tarefa Tarefa { get { return tarefa; } }
+        public Tarefa Tarefa
+        {
+            get
+            {
+                return tarefa;
+            }
+            set
+            {
+                txtId.Text = value.Id.ToString();
+                txtTitulo.Text = value.Titulo;
+                cmbPrioridades.SelectedItem = value.Prioridade;
+            }
+        }
 
         public TelaTarefaForm()
         {
