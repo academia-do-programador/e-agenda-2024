@@ -120,7 +120,34 @@ namespace eAgenda.WinApp.ModuloTarefa
 
         public void AdicionarItens()
         {
-            throw new NotImplementedException();
+            int idSelecionado = listTarefas.ObterIdSelecionado();
+
+            Tarefa tarefaSelecionada =
+                repositorioTarefa.SelecionarPorId(idSelecionado);
+
+            if (tarefaSelecionada == null)
+            {
+                MessageBox.Show(
+                    "Não é possível realizar esta ação sem um registro selecionado.",
+                    "Aviso",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+                return;
+            }
+
+            TelaCadastroItemTarefa tela = new TelaCadastroItemTarefa(tarefaSelecionada);
+
+            DialogResult resultado = tela.ShowDialog();
+
+            if (resultado != DialogResult.OK)
+                return;
+
+            List<ItemTarefa> itens = tela.ItensAdicionados;
+
+            repositorioTarefa.AdicionarItens(tarefaSelecionada, itens);
+
+            CarregarTarefas();
         }
 
         private void CarregarTarefas()

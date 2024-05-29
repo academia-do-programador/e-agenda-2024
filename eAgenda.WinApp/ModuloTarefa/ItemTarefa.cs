@@ -21,5 +21,10 @@
         {
             Concluido = false;
         }
+
+        public override string ToString()
+        {
+            return $"{Titulo}";
+        }
     }
 }

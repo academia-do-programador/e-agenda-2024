@@ -58,11 +58,12 @@
             // 
             // listItensTarefa
             // 
+            listItensTarefa.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             listItensTarefa.FormattingEnabled = true;
-            listItensTarefa.ItemHeight = 15;
+            listItensTarefa.ItemHeight = 20;
             listItensTarefa.Location = new Point(12, 101);
             listItensTarefa.Name = "listItensTarefa";
-            listItensTarefa.Size = new Size(384, 169);
+            listItensTarefa.Size = new Size(384, 164);
             listItensTarefa.TabIndex = 10;
             // 
             // btnAdicionar
@@ -74,6 +75,7 @@
             btnAdicionar.TabIndex = 11;
             btnAdicionar.Text = "Adicionar";
             btnAdicionar.UseVisualStyleBackColor = true;
+            btnAdicionar.Click += btnAdicionar_Click;
             // 
             // label2
             // 
@@ -105,6 +107,7 @@
             btnGravar.TabIndex = 15;
             btnGravar.Text = "Gravar";
             btnGravar.UseVisualStyleBackColor = true;
+            btnGravar.Click += btnGravar_Click;
             // 
             // btnCancelar
             // 
