@@ -18,6 +18,8 @@ namespace eAgenda.WinApp.ModuloTarefa
 
         public string ToolTipAdicionarItens { get { return "Adicionar itens para uma tarefa"; } }
 
+        public string ToolTipConcluirItens { get { return "Concluir itens de uma tarefa"; } }
+
         public ControladorTarefa(RepositorioTarefa repositorioTarefa)
         {
             this.repositorioTarefa = repositorioTarefa;
@@ -150,6 +152,39 @@ namespace eAgenda.WinApp.ModuloTarefa
             CarregarTarefas();
         }
 
+        public void AtualizarItens()
+        {
+            int idSelecionado = listTarefas.ObterIdSelecionado();
+
+            Tarefa tarefaSelecionada =
+                repositorioTarefa.SelecionarPorId(idSelecionado);
+
+            if (tarefaSelecionada == null)
+            {
+                MessageBox.Show(
+                    "Não é possível realizar esta ação sem um registro selecionado.",
+                    "Aviso",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+                return;
+            }
+
+            TelaAtualizacaoItemTarefa tela = new TelaAtualizacaoItemTarefa(tarefaSelecionada);
+
+            DialogResult resultado = tela.ShowDialog();
+
+            if (resultado != DialogResult.OK)
+                return;
+
+            List<ItemTarefa> itensPendentes = tela.ItensPendentes;
+            List<ItemTarefa> itensConcluidos = tela.ItensConcluidos;
+
+            repositorioTarefa.AtualizarItens(tarefaSelecionada, itensPendentes, itensConcluidos);
+
+            CarregarTarefas();
+        }
+
         private void CarregarTarefas()
         {
             List<Tarefa> contatos = repositorioTarefa.SelecionarTodos();
@@ -166,6 +201,5 @@ namespace eAgenda.WinApp.ModuloTarefa
 
             return listTarefas;
         }
-
     }
 }

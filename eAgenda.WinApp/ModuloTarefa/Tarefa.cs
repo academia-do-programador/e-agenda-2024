@@ -49,6 +49,29 @@ namespace eAgenda.WinApp.ModuloTarefa
             return true;
         }
 
+        public void ConcluirItem(ItemTarefa item)
+        {
+            ItemTarefa itemTarefa = Itens.Find(i => i.Titulo == item.Titulo);
+
+            if (itemTarefa == null)
+                return;
+
+            itemTarefa.Concluir();
+
+            if (Itens.All(i => i.Concluido))
+                DataConclusao = DateTime.Now;
+        }
+
+        public void MarcarPendente(ItemTarefa item)
+        {
+            ItemTarefa itemTarefa = Itens.Find(i => i.Titulo == item.Titulo);
+
+            if (itemTarefa == null)
+                return;
+
+            itemTarefa.MarcarPendente();
+        }
+
         public override void AtualizarRegistro(EntidadeBase novoRegistro)
         {
             Tarefa nova = (Tarefa)novoRegistro;

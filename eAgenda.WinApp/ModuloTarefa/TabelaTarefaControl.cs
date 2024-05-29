@@ -33,6 +33,7 @@
 
                     item.SubItems.Add(t.Titulo);
                     item.SubItems.Add(t.DataCriacao.ToShortDateString());
+                    item.SubItems.Add(t.PercentualConcluido + " %");
 
                     item.Group = listViewGroup;
 
@@ -59,6 +60,7 @@
                 new ColumnHeader() { Text = "Id", Width = 80 },
                 new ColumnHeader() { Text = "Título", Width = 200 },
                 new ColumnHeader() { Text = "Data de Criação", Width = 100 },
+                new ColumnHeader() { Text = "% Concluído", Width = 80, TextAlign = HorizontalAlignment.Right },
             };
 
             listTarefas.Columns.AddRange(colunas);

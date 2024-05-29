@@ -34,6 +34,7 @@
             // listTarefas
             // 
             listTarefas.Dock = DockStyle.Fill;
+            listTarefas.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             listTarefas.Location = new Point(0, 0);
             listTarefas.Name = "listTarefas";
             listTarefas.Size = new Size(628, 367);
