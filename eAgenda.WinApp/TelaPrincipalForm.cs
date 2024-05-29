@@ -144,6 +144,7 @@ namespace eAgenda.WinApp
                 new Tarefa("Testar código da aula", PrioridadeTarefaEnum.Alta),
                 new Tarefa("Passar notas dos alunos", PrioridadeTarefaEnum.Normal),
                 new Tarefa("Reunião após aula", PrioridadeTarefaEnum.Baixa),
+                new Tarefa("Gravar vídeos", PrioridadeTarefaEnum.Alta),
             };
 
             repositorioTarefa.CadastrarVarios(tarefas);
