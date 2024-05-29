@@ -23,7 +23,22 @@ namespace eAgenda.WinApp.ModuloTarefa
 
         public override void Adicionar()
         {
-            throw new NotImplementedException();
+            TelaTarefaForm telaTarefa = new TelaTarefaForm();
+
+            DialogResult resultado = telaTarefa.ShowDialog();
+
+            if (resultado != DialogResult.OK)
+                return;
+
+            Tarefa novaTarefa = telaTarefa.Tarefa;
+
+            repositorioTarefa.Cadastrar(novaTarefa);
+
+            CarregarTarefas();
+
+            TelaPrincipalForm
+                .Instancia
+                .AtualizarRodape($"O registro \"{novaTarefa.Titulo}\" foi criado com sucesso!");
         }
 
         public override void Editar()

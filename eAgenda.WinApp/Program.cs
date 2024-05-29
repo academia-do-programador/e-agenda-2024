@@ -1,5 +1,3 @@
-using eAgenda.WinApp.ModuloTarefa;
-
 namespace eAgenda.WinApp
 {
     internal static class Program
@@ -14,7 +12,7 @@ namespace eAgenda.WinApp
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
 
-            Application.Run(new TelaTarefaForm());
+            Application.Run(new TelaPrincipalForm());
         }
     }
 }

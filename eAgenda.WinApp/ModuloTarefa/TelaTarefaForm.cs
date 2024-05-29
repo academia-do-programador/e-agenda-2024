@@ -2,16 +2,41 @@
 {
     public partial class TelaTarefaForm : Form
     {
+        private Tarefa tarefa;
+        public Tarefa Tarefa { get { return tarefa; } }
+
         public TelaTarefaForm()
         {
             InitializeComponent();
 
-            Type tipo = typeof(PrioridadeTarefaEnum);
+            CarregarPrioridades();
+        }
 
-            Array nomesEnum = Enum.GetValues(tipo);
+        private void btnGravar_Click(object sender, EventArgs e)
+        {
+            string titulo = txtTitulo.Text;
 
-            foreach (var nome in nomesEnum)
-                cmbPrioridades.Items.Add(nome);
+            PrioridadeTarefaEnum prioridade =
+                (PrioridadeTarefaEnum)cmbPrioridades.SelectedItem;
+
+            tarefa = new Tarefa(titulo, prioridade);
+
+            List<string> erros = tarefa.Validar();
+
+            if (erros.Count > 0)
+            {
+                TelaPrincipalForm.Instancia.AtualizarRodape(erros[0]);
+
+                DialogResult = DialogResult.None;
+            }
+        }
+
+        private void CarregarPrioridades()
+        {
+            Array valoresEnum = Enum.GetValues(typeof(PrioridadeTarefaEnum));
+
+            foreach (var valor in valoresEnum)
+                cmbPrioridades.Items.Add(valor);
 
             cmbPrioridades.SelectedItem = PrioridadeTarefaEnum.Baixa;
         }
