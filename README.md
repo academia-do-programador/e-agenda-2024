@@ -38,10 +38,24 @@ Para isto, será necessário fazer uma gestão de contatos inteligente e JP pretend
 	- itens
 	- percentual concluído
 
-	3.1. Item da Tarefa
+	3.1. **Item da Tarefa**
 	- título
 	- concluído (status)
 	- tarefa
+
+**Cadastros da Aula 60**
+
+4. O cadastro do **Categoria** consiste de:
+	- título
+	- despesas
+
+	4.1. Deverá ser possível visualizar todas as **despesas pertencentes a uma categoria**
+
+5. O cadastro de **Despesa** consiste de:
+	- descrição
+	- valor
+	- forma de pagamento
+	- categorias (várias)
 ---
 
 ## Requisitos
