@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             label1 = new Label();
-            txtNumero = new TextBox();
+            txtId = new TextBox();
             txtDescricao = new TextBox();
             label2 = new Label();
             txtValor = new TextBox();
@@ -55,15 +55,15 @@
             label1.TabIndex = 0;
             label1.Text = "Id:";
             // 
-            // txtNumero
+            // txtId
             // 
-            txtNumero.Enabled = false;
-            txtNumero.Font = new Font("Segoe UI", 11.25F);
-            txtNumero.Location = new Point(128, 13);
-            txtNumero.Name = "txtNumero";
-            txtNumero.Size = new Size(79, 27);
-            txtNumero.TabIndex = 1;
-            txtNumero.Text = "0";
+            txtId.Enabled = false;
+            txtId.Font = new Font("Segoe UI", 11.25F);
+            txtId.Location = new Point(128, 13);
+            txtId.Name = "txtId";
+            txtId.Size = new Size(79, 27);
+            txtId.TabIndex = 1;
+            txtId.Text = "0";
             // 
             // txtDescricao
             // 
@@ -199,7 +199,7 @@
             Controls.Add(label3);
             Controls.Add(txtDescricao);
             Controls.Add(label2);
-            Controls.Add(txtNumero);
+            Controls.Add(txtId);
             Controls.Add(label1);
             FormBorderStyle = FormBorderStyle.FixedDialog;
             Name = "TelaDespesaForm";
@@ -215,7 +215,7 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtNumero;
+        private System.Windows.Forms.TextBox txtId;
         private System.Windows.Forms.TextBox txtDescricao;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtValor;
