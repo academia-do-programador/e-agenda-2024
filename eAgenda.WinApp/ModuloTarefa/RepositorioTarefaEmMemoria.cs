@@ -2,7 +2,7 @@
 
 namespace eAgenda.WinApp.ModuloTarefa
 {
-    public class RepositorioTarefa : RepositorioBase<Tarefa>, IRepositorioTarefa
+    public class RepositorioTarefaEmMemoria : RepositorioBaseEmMemoria<Tarefa>, IRepositorioTarefa
     {
         public void AdicionarItens(Tarefa tarefaSelecionada, List<ItemTarefa> itens)
         {

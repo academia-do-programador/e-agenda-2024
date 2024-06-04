@@ -1,9 +1,14 @@
-﻿using eAgenda.ConsoleApp.Compartilhado;
+﻿using eAgenda.WinApp.Compartilhado;
 
 namespace eAgenda.WinApp.ModuloCompromisso
 {
-    public class RepositorioCompromisso : RepositorioBase<Compromisso>
+    public class RepositorioCompromissoEmArquivo :
+        RepositorioBaseEmArquivo<Compromisso>, IRepositorioCompromisso
     {
+        public RepositorioCompromissoEmArquivo() : base("compromissos.json")
+        {
+        }
+
         public List<Compromisso> SelecionarCompromissosPorPeriodo(DateTime dataInicio, DateTime dataTermino)
         {
             return registros

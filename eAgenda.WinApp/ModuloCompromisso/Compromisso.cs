@@ -31,6 +31,10 @@ namespace eAgenda.WinApp.ModuloCompromisso
             }
         }
 
+        public Compromisso()
+        {
+        }
+
         public Compromisso(
             string assunto,
             string local,
