@@ -11,7 +11,7 @@ namespace eAgenda.WinApp
 
         IRepositorioContato repositorioContato;
         IRepositorioCompromisso repositorioCompromisso;
-        RepositorioTarefa repositorioTarefa;
+        IRepositorioTarefa repositorioTarefa;
 
         public static TelaPrincipalForm Instancia { get; private set; }
 
@@ -23,9 +23,7 @@ namespace eAgenda.WinApp
 
             repositorioContato = new RepositorioContatoEmArquivo();
             repositorioCompromisso = new RepositorioCompromissoEmArquivo();
-            repositorioTarefa = new RepositorioTarefa();
-
-            CadastrarRegistrosTeste();
+            repositorioTarefa = new RepositorioTarefaEmArquivo();
         }
 
         public void AtualizarRodape(string texto)
@@ -131,43 +129,6 @@ namespace eAgenda.WinApp
 
             pnlRegistros.Controls.Clear();
             pnlRegistros.Controls.Add(listagemContato);
-        }
-
-        private void CadastrarRegistrosTeste()
-        {
-            //List<Contato> contatos = new List<Contato>()
-            //{
-            //    new("alexandre rech", "49 99833-2123", "rech@gmail.com", "Academia do Programador", "CEO"),
-            //    new("Tiago santini", "49 98505-6251", "tiago@gmail.com", "Academia do Programador", "Professor"),
-            //    new("JOSÉ PEDRO", "49 98404-6020", "jp@gmail.com", "Cronos Soluções de Informática", "Vendedor")
-            //};
-
-            //repositorioContato.CadastrarVarios(contatos);
-
-            //DateTime data = DateTime.Today.AddDays(-3);
-            //TimeSpan horaInicio = new TimeSpan(09, 00, 00);
-            //TimeSpan horaTermino = new TimeSpan(10, 00, 00);
-
-            //DateTime dataFuturo = DateTime.Today.AddDays(5);
-
-            //List<Compromisso> compromissos = new List<Compromisso>()
-            //{
-            //    new("Reunião", "", "www.discord.com", data, horaInicio, horaTermino, contatos.First()),
-            //    new("Lavar o Cachorro", "Casa", "", dataFuturo, new TimeSpan(10, 00, 00), new TimeSpan(10, 30, 00), null),
-            //    new("Criar scripts de automatização", "Casa", "", dataFuturo.AddDays(10), new TimeSpan(19, 00, 00), new TimeSpan(23, 59, 00), null)
-            //};
-
-            //repositorioCompromisso.CadastrarVarios(compromissos);
-
-            //List<Tarefa> tarefas = new List<Tarefa>()
-            //{
-            //    new Tarefa("Testar código da aula", PrioridadeTarefaEnum.Alta),
-            //    new Tarefa("Passar notas dos alunos", PrioridadeTarefaEnum.Normal),
-            //    new Tarefa("Reunião após aula", PrioridadeTarefaEnum.Baixa),
-            //    new Tarefa("Gravar vídeos", PrioridadeTarefaEnum.Alta),
-            //};
-
-            //repositorioTarefa.CadastrarVarios(tarefas);
         }
     }
 }

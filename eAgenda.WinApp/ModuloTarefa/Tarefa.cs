@@ -26,6 +26,10 @@ namespace eAgenda.WinApp.ModuloTarefa
             }
         }
 
+        public Tarefa()
+        {
+        }
+
         public Tarefa(string titulo, PrioridadeTarefaEnum prioridade)
         {
             Titulo = titulo;
