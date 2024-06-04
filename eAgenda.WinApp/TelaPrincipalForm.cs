@@ -21,7 +21,7 @@ namespace eAgenda.WinApp
             lblTipoCadastro.Text = string.Empty;
             Instancia = this;
 
-            repositorioContato = new RepositorioContatoEmMemoria();
+            repositorioContato = new RepositorioContatoEmArquivo();
             repositorioCompromisso = new RepositorioCompromisso();
             repositorioTarefa = new RepositorioTarefa();
 

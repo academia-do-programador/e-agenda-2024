@@ -10,6 +10,15 @@ namespace eAgenda.WinApp.Compartilhado
 
         protected int contadorId = 1;
 
+        private string caminho = string.Empty;
+
+        public RepositorioBaseEmArquivo(string nomeArquivo)
+        {
+            caminho = $"C:\\temp\\eAgenda\\{nomeArquivo}";
+
+            registros = DeserializarRegistros();
+        }
+
         public void Cadastrar(T novoRegistro)
         {
             novoRegistro.Id = contadorId++;
@@ -28,12 +37,21 @@ namespace eAgenda.WinApp.Compartilhado
 
             registro.AtualizarRegistro(novaEntidade);
 
+            SerializarRegistros();
+
             return true;
         }
 
         public bool Excluir(int id)
         {
-            return registros.Remove(SelecionarPorId(id));
+            bool conseguiuExcluir = registros.Remove(SelecionarPorId(id));
+
+            if (!conseguiuExcluir)
+                return false;
+
+            SerializarRegistros();
+
+            return true;
         }
 
         public List<T> SelecionarTodos()
@@ -53,7 +71,7 @@ namespace eAgenda.WinApp.Compartilhado
 
         protected void SerializarRegistros()
         {
-            FileInfo arquivo = new FileInfo($"C:\\temp\\eAgenda\\contatos.json");
+            FileInfo arquivo = new FileInfo(caminho);
 
             arquivo.Directory.Create();
 
@@ -65,7 +83,26 @@ namespace eAgenda.WinApp.Compartilhado
 
             byte[] registrosEmBytes = JsonSerializer.SerializeToUtf8Bytes(registros, options);
 
-            File.WriteAllBytes($"C:\\temp\\eAgenda\\contatos.json", registrosEmBytes);
+            File.WriteAllBytes(caminho, registrosEmBytes);
+        }
+
+        protected List<T> DeserializarRegistros()
+        {
+            FileInfo arquivo = new FileInfo(caminho);
+
+            if (!arquivo.Exists)
+                return new List<T>();
+
+            byte[] registrosEmBytes = File.ReadAllBytes(caminho);
+
+            JsonSerializerOptions options = new JsonSerializerOptions()
+            {
+                ReferenceHandler = ReferenceHandler.Preserve
+            };
+
+            List<T> registros = JsonSerializer.Deserialize<List<T>>(registrosEmBytes, options);
+
+            return registros;
         }
     }
 }
