@@ -10,7 +10,7 @@ namespace eAgenda.WinApp
         ControladorBase controlador;
 
         IRepositorioContato repositorioContato;
-        RepositorioCompromisso repositorioCompromisso;
+        IRepositorioCompromisso repositorioCompromisso;
         RepositorioTarefa repositorioTarefa;
 
         public static TelaPrincipalForm Instancia { get; private set; }
@@ -22,7 +22,7 @@ namespace eAgenda.WinApp
             Instancia = this;
 
             repositorioContato = new RepositorioContatoEmArquivo();
-            repositorioCompromisso = new RepositorioCompromisso();
+            repositorioCompromisso = new RepositorioCompromissoEmArquivo();
             repositorioTarefa = new RepositorioTarefa();
 
             CadastrarRegistrosTeste();

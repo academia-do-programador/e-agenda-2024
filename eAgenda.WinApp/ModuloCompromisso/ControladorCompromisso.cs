@@ -7,7 +7,7 @@ namespace eAgenda.WinApp.ModuloCompromisso
     {
         private TabelaCompromissoControl tabelaCompromisso;
 
-        private RepositorioCompromisso repositorioCompromisso;
+        private IRepositorioCompromisso repositorioCompromisso;
         private IRepositorioContato repositorioContato;
 
         public override string TipoCadastro { get { return "Compromissos"; } }
@@ -20,7 +20,7 @@ namespace eAgenda.WinApp.ModuloCompromisso
 
         public string ToolTipFiltrar { get { return "Filtrar Compromissos"; } }
 
-        public ControladorCompromisso(RepositorioCompromisso repositorioCompromisso, IRepositorioContato repositorioContato)
+        public ControladorCompromisso(IRepositorioCompromisso repositorioCompromisso, IRepositorioContato repositorioContato)
         {
             this.repositorioCompromisso = repositorioCompromisso;
             this.repositorioContato = repositorioContato;

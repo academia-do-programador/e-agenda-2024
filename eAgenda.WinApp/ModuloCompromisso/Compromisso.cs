@@ -12,7 +12,6 @@ namespace eAgenda.WinApp.ModuloCompromisso
         public TimeSpan HoraTermino { get; set; }
 
         public Contato Contato { get; set; }
-
         public string Local { get; set; }
         public string Link { get; set; }
 
@@ -29,6 +28,11 @@ namespace eAgenda.WinApp.ModuloCompromisso
 
                 return tipoSelecionado;
             }
+        }
+
+        public Compromisso()
+        {
+
         }
 
         public Compromisso(

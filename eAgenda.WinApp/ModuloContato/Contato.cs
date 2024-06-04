@@ -11,6 +11,11 @@ namespace eAgenda.WinApp.ModuloContato
         public string Empresa { get; set; }
         public string Cargo { get; set; }
 
+        public Contato()
+        {
+
+        }
+
         public Contato(string nome, string telefone, string email, string empresa, string cargo)
         {
             Nome = nome;
