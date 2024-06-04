@@ -7,6 +7,11 @@
         public bool Concluido { get; set; }
         public Tarefa Tarefa { get; set; }
 
+        public ItemTarefa()
+        {
+
+        }
+
         public ItemTarefa(string titulo)
         {
             this.Titulo = titulo;

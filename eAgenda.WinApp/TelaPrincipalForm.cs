@@ -11,7 +11,7 @@ namespace eAgenda.WinApp
 
         RepositorioContato repositorioContato;
         RepositorioCompromisso repositorioCompromisso;
-        RepositorioTarefa repositorioTarefa;
+        IRepositorioTarefa repositorioTarefa;
 
         public static TelaPrincipalForm Instancia { get; private set; }
 
@@ -23,7 +23,7 @@ namespace eAgenda.WinApp
 
             repositorioContato = new RepositorioContato();
             repositorioCompromisso = new RepositorioCompromisso();
-            repositorioTarefa = new RepositorioTarefa();
+            repositorioTarefa = new RepositorioTarefaEmArquivo();
 
             CadastrarRegistrosTeste();
         }
@@ -159,15 +159,15 @@ namespace eAgenda.WinApp
 
             repositorioCompromisso.CadastrarVarios(compromissos);
 
-            List<Tarefa> tarefas = new List<Tarefa>()
-            {
-                new Tarefa("Testar código da aula", PrioridadeTarefaEnum.Alta),
-                new Tarefa("Passar notas dos alunos", PrioridadeTarefaEnum.Normal),
-                new Tarefa("Reunião após aula", PrioridadeTarefaEnum.Baixa),
-                new Tarefa("Gravar vídeos", PrioridadeTarefaEnum.Alta),
-            };
+            //List<Tarefa> tarefas = new List<Tarefa>()
+            //{
+            //    new Tarefa("Testar código da aula", PrioridadeTarefaEnum.Alta),
+            //    new Tarefa("Passar notas dos alunos", PrioridadeTarefaEnum.Normal),
+            //    new Tarefa("Reunião após aula", PrioridadeTarefaEnum.Baixa),
+            //    new Tarefa("Gravar vídeos", PrioridadeTarefaEnum.Alta),
+            //};
 
-            repositorioTarefa.CadastrarVarios(tarefas);
+            //repositorioTarefa.CadastrarVarios(tarefas);
         }
     }
 }

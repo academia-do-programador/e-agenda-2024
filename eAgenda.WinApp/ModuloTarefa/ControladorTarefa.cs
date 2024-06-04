@@ -6,7 +6,7 @@ namespace eAgenda.WinApp.ModuloTarefa
     {
         private TabelaTarefaControl listTarefas;
 
-        private RepositorioTarefa repositorioTarefa;
+        private IRepositorioTarefa repositorioTarefa;
 
         public override string TipoCadastro { get { return "Tarefas"; } }
 
@@ -20,7 +20,7 @@ namespace eAgenda.WinApp.ModuloTarefa
 
         public string ToolTipConcluirItens { get { return "Concluir itens de uma tarefa"; } }
 
-        public ControladorTarefa(RepositorioTarefa repositorioTarefa)
+        public ControladorTarefa(IRepositorioTarefa repositorioTarefa)
         {
             this.repositorioTarefa = repositorioTarefa;
         }
