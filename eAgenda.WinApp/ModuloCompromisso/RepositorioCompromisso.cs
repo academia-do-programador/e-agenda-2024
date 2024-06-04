@@ -2,7 +2,7 @@
 
 namespace eAgenda.WinApp.ModuloCompromisso
 {
-    public class RepositorioCompromisso : RepositorioBase<Compromisso>
+    public class RepositorioCompromisso : RepositorioBaseEmMemoria<Compromisso>
     {
         public List<Compromisso> SelecionarCompromissosPorPeriodo(DateTime dataInicio, DateTime dataTermino)
         {
