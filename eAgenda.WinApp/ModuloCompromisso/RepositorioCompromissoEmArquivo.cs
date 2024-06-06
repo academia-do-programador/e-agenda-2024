@@ -4,24 +4,29 @@ namespace eAgenda.WinApp.ModuloCompromisso
 {
     public class RepositorioCompromissoEmArquivo : RepositorioBaseEmArquivo<Compromisso>, IRepositorioCompromisso
     {
-        public RepositorioCompromissoEmArquivo() : base("compromissos.json")
+        public RepositorioCompromissoEmArquivo(ContextoDados contexto) : base(contexto)
         {
+        }
+
+        protected override List<Compromisso> ObterRegistros()
+        {
+            return contexto.Compromissos;
         }
 
         public List<Compromisso> SelecionarCompromissosPorPeriodo(DateTime dataInicio, DateTime dataTermino)
         {
-            return registros
+            return ObterRegistros()
                 .FindAll(c => c.Data >= dataInicio && c.Data <= dataTermino);
         }
 
         public List<Compromisso> SelecionarCompromissosFuturos()
         {
-            return registros.FindAll(c => c.Data >= DateTime.Today);
+            return ObterRegistros().FindAll(c => c.Data >= DateTime.Today);
         }
 
         public List<Compromisso> SelecionarCompromissosPassados()
         {
-            return registros.FindAll(c => c.Data < DateTime.Today);
+            return ObterRegistros().FindAll(c => c.Data < DateTime.Today);
         }
     }
 }

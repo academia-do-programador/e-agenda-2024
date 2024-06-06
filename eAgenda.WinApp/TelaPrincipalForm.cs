@@ -9,6 +9,8 @@ namespace eAgenda.WinApp
     {
         ControladorBase controlador;
 
+        ContextoDados contexto;
+
         IRepositorioContato repositorioContato;
         IRepositorioCompromisso repositorioCompromisso;
         IRepositorioTarefa repositorioTarefa;
@@ -21,9 +23,11 @@ namespace eAgenda.WinApp
             lblTipoCadastro.Text = string.Empty;
             Instancia = this;
 
-            repositorioContato = new RepositorioContatoEmArquivo();
-            repositorioCompromisso = new RepositorioCompromissoEmArquivo();
-            repositorioTarefa = new RepositorioTarefaEmArquivo();
+            contexto = new ContextoDados(carregarDados: true);
+
+            repositorioContato = new RepositorioContatoEmArquivo(contexto);
+            repositorioCompromisso = new RepositorioCompromissoEmArquivo(contexto);
+            repositorioTarefa = new RepositorioTarefaEmArquivo(contexto);
         }
 
         public void AtualizarRodape(string texto)

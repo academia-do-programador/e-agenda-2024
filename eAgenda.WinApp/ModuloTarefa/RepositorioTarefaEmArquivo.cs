@@ -4,8 +4,13 @@ namespace eAgenda.WinApp.ModuloTarefa
 {
     public class RepositorioTarefaEmArquivo : RepositorioBaseEmArquivo<Tarefa>, IRepositorioTarefa
     {
-        public RepositorioTarefaEmArquivo() : base("tarefas.json")
+        public RepositorioTarefaEmArquivo(ContextoDados contexto) : base(contexto)
         {
+        }
+
+        protected override List<Tarefa> ObterRegistros()
+        {
+            return contexto.Tarefas;
         }
 
         public void AdicionarItens(Tarefa tarefaSelecionada, List<ItemTarefa> itens)
@@ -13,7 +18,7 @@ namespace eAgenda.WinApp.ModuloTarefa
             foreach (ItemTarefa item in itens)
                 tarefaSelecionada.AdicionarItem(item);
 
-            SerializarRegistros();
+            contexto.Gravar();
         }
 
         public void AtualizarItens(Tarefa tarefaSelecionada, List<ItemTarefa> itensPendentes, List<ItemTarefa> itensConcluidos)
@@ -24,7 +29,7 @@ namespace eAgenda.WinApp.ModuloTarefa
             foreach (ItemTarefa i in itensConcluidos)
                 tarefaSelecionada.ConcluirItem(i);
 
-            SerializarRegistros();
+            contexto.Gravar();
         }
     }
 }
