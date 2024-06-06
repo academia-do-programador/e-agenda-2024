@@ -6,6 +6,8 @@ namespace eAgenda.WinApp.ModuloCompromisso
     {
         public RepositorioCompromissoEmArquivo(ContextoDados contexto) : base(contexto)
         {
+            if (contexto.Compromissos.Any())
+                contadorId = contexto.Compromissos.Max(c => c.Id) + 1;
         }
 
         protected override List<Compromisso> ObterRegistros()

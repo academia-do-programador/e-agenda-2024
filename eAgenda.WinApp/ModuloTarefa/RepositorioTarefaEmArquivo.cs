@@ -6,6 +6,8 @@ namespace eAgenda.WinApp.ModuloTarefa
     {
         public RepositorioTarefaEmArquivo(ContextoDados contexto) : base(contexto)
         {
+            if (contexto.Tarefas.Any())
+                contadorId = contexto.Tarefas.Max(c => c.Id) + 1;
         }
 
         protected override List<Tarefa> ObterRegistros()

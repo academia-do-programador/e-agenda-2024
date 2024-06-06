@@ -8,6 +8,8 @@ namespace eAgenda.WinApp.ModuloContato
     {
         public RepositorioContatoEmArquivo(ContextoDados contexto) : base(contexto)
         {
+            if (contexto.Contatos.Any())
+                contadorId = contexto.Contatos.Max(c => c.Id) + 1;
         }
 
         protected override List<Contato> ObterRegistros()
