@@ -5,6 +5,7 @@ namespace eAgenda.WinApp.ModuloDespesa
     public class ControladorDespesa : ControladorBase
     {
         private IRepositorioDespesa repositorioDespesa;
+        private IRepositorioCategoria repositorioCategoria;
         private TabelaDespesaControl tabelaDespesas;
 
         public override string TipoCadastro { get { return "Despesas"; } }
@@ -15,14 +16,36 @@ namespace eAgenda.WinApp.ModuloDespesa
 
         public override string ToolTipExcluir { get { return "Excluír uma despesa existente"; } }
 
-        public ControladorDespesa(IRepositorioDespesa repositorioDespesa)
+        public ControladorDespesa(IRepositorioDespesa repositorioDespesa, IRepositorioCategoria repositorioCategoria)
         {
             this.repositorioDespesa = repositorioDespesa;
+            this.repositorioCategoria = repositorioCategoria;
         }
 
         public override void Adicionar()
         {
-            throw new NotImplementedException();
+            TelaDespesaForm telaDespesa = new TelaDespesaForm();
+
+            List<Categoria> categoriasCadastradas = repositorioCategoria.SelecionarTodos();
+
+            telaDespesa.CarregarCategorias(categoriasCadastradas);
+
+            DialogResult resultado = telaDespesa.ShowDialog();
+
+            if (resultado != DialogResult.OK)
+                return;
+
+            Despesa novaDespesa = telaDespesa.Despesa;
+
+            repositorioDespesa.Cadastrar(novaDespesa);
+
+            repositorioDespesa.AdicionarCategorias(novaDespesa, telaDespesa.CategoriasSelecionadas);
+
+            CarregarDespesas();
+
+            TelaPrincipalForm
+                .Instancia
+                .AtualizarRodape($"O registro \"{novaDespesa.Descricao}\" foi criado com sucesso!");
         }
 
         public override void Editar()

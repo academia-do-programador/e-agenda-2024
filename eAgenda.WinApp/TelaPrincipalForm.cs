@@ -70,7 +70,7 @@ namespace eAgenda.WinApp
 
         private void despesasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            controlador = new ControladorDespesa(repositorioDespesa);
+            controlador = new ControladorDespesa(repositorioDespesa, repositorioCategoria);
 
             ConfigurarTelaPrincipal(controlador);
         }

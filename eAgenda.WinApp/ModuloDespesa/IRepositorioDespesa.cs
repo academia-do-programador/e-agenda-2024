@@ -7,5 +7,7 @@
         bool Excluir(int id);
         Despesa SelecionarPorId(int idSelecionado);
         List<Despesa> SelecionarTodos();
+
+        void AdicionarCategorias(Despesa despesa, List<Categoria> categorias);
     }
 }

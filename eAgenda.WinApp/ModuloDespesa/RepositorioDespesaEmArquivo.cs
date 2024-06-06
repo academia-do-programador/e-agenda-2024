@@ -8,9 +8,20 @@ namespace eAgenda.WinApp.ModuloDespesa
         {
         }
 
+        public void AdicionarCategorias(Despesa despesa, List<Categoria> categorias)
+        {
+            foreach (Categoria categoria in categorias)
+            {
+                despesa.AtribuirCategoria(categoria);
+                categoria.RegistrarDespesa(despesa);
+            }
+
+            contexto.Gravar();
+        }
+
         protected override List<Despesa> ObterRegistros()
         {
-            throw new NotImplementedException();
+            return contexto.Despesas;
         }
     }
 }

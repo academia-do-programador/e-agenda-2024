@@ -44,5 +44,10 @@ namespace eAgenda.WinApp.ModuloDespesa
 
             return erros;
         }
+
+        public override string ToString()
+        {
+            return Titulo;
+        }
     }
 }

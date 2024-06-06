@@ -12,20 +12,18 @@ namespace eAgenda.WinApp.ModuloDespesa
 
         public FormaPagamentoEnum FormaPagamento { get; set; }
 
-        public List<Categoria> Categorias { get; set; }
+        public List<Categoria> Categorias { get; set; } = new List<Categoria>();
 
         public Despesa()
         {
         }
 
-        public Despesa(string descricao, decimal valor, FormaPagamentoEnum formaPagamento, List<Categoria> categorias)
+        public Despesa(string descricao, decimal valor, DateTime data, FormaPagamentoEnum formaPagamento)
         {
-            Data = DateTime.Now;
-
             Descricao = descricao;
             Valor = valor;
+            Data = data;
             FormaPagamento = formaPagamento;
-            Categorias = categorias;
         }
 
         public override void AtualizarRegistro(EntidadeBase novoRegistro)

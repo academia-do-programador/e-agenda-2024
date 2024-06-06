@@ -171,6 +171,7 @@
             btnGravar.TabIndex = 17;
             btnGravar.Text = "Gravar";
             btnGravar.UseVisualStyleBackColor = true;
+            btnGravar.Click += btnGravar_Click;
             // 
             // btnCancelar
             // 
@@ -187,7 +188,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(431, 447);
+            ClientSize = new Size(443, 451);
             Controls.Add(btnGravar);
             Controls.Add(btnCancelar);
             Controls.Add(groupBox1);
