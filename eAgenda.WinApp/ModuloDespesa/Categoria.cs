@@ -6,6 +6,8 @@ namespace eAgenda.WinApp.ModuloDespesa
     {
         public string Titulo { get; set; }
 
+        public List<Despesa> Despesas = new List<Despesa>();
+
         public Categoria()
         {
 
@@ -14,6 +16,16 @@ namespace eAgenda.WinApp.ModuloDespesa
         public Categoria(string titulo)
         {
             this.Titulo = titulo;
+        }
+
+        public void RegistrarDespesa(Despesa despesa)
+        {
+            if (Despesas.Any(d => d.Id == despesa.Id))
+                return;
+
+            Despesas.Add(despesa);
+
+            despesa.AtribuirCategoria(this);
         }
 
         public override void AtualizarRegistro(EntidadeBase novoRegistro)

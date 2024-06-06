@@ -13,6 +13,7 @@ namespace eAgenda.WinApp.Compartilhado
         public List<Compromisso> Compromissos { get; set; }
         public List<Tarefa> Tarefas { get; set; }
         public List<Categoria> Categorias { get; set; }
+        public List<Despesa> Despesas { get; set; }
 
         private string caminho = $"C:\\temp\\eAgenda\\dados.json";
 
@@ -25,6 +26,8 @@ namespace eAgenda.WinApp.Compartilhado
             Tarefas = new List<Tarefa>();
 
             Categorias = new List<Categoria>();
+
+            Despesas = new List<Despesa>();
         }
 
         public ContextoDados(bool carregarDados) : this()
@@ -75,6 +78,8 @@ namespace eAgenda.WinApp.Compartilhado
             Tarefas = ctx.Tarefas;
 
             Categorias = ctx.Categorias;
+
+            Despesas = ctx.Despesas;
         }
     }
 }

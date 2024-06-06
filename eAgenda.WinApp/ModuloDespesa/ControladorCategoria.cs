@@ -7,7 +7,7 @@ namespace eAgenda.WinApp.ModuloDespesa
         private IRepositorioCategoria repositorioCategoria;
         private TabelaCategoriaControl tabelaCategorias;
 
-        public override string TipoCadastro { get { return "Categorias "; } }
+        public override string TipoCadastro { get { return "Categorias"; } }
 
         public override string ToolTipAdicionar { get { return "Cadastrar nova categoria"; } }
 
