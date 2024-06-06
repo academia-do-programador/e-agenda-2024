@@ -1,6 +1,7 @@
 using eAgenda.WinApp.Compartilhado;
 using eAgenda.WinApp.ModuloCompromisso;
 using eAgenda.WinApp.ModuloContato;
+using eAgenda.WinApp.ModuloDespesa;
 using eAgenda.WinApp.ModuloTarefa;
 
 namespace eAgenda.WinApp
@@ -14,6 +15,7 @@ namespace eAgenda.WinApp
         IRepositorioContato repositorioContato;
         IRepositorioCompromisso repositorioCompromisso;
         IRepositorioTarefa repositorioTarefa;
+        IRepositorioCategoria repositorioCategoria;
 
         public static TelaPrincipalForm Instancia { get; private set; }
 
@@ -28,6 +30,7 @@ namespace eAgenda.WinApp
             repositorioContato = new RepositorioContatoEmArquivo(contexto);
             repositorioCompromisso = new RepositorioCompromissoEmArquivo(contexto);
             repositorioTarefa = new RepositorioTarefaEmArquivo(contexto);
+            repositorioCategoria = new RepositorioCategoriaEmArquivo(contexto);
         }
 
         public void AtualizarRodape(string texto)
@@ -52,6 +55,13 @@ namespace eAgenda.WinApp
         private void tarefasToolStripMenuItem_Click(object sender, EventArgs e)
         {
             controlador = new ControladorTarefa(repositorioTarefa);
+
+            ConfigurarTelaPrincipal(controlador);
+        }
+
+        private void categoriasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            controlador = new ControladorCategoria(repositorioCategoria);
 
             ConfigurarTelaPrincipal(controlador);
         }
@@ -134,5 +144,7 @@ namespace eAgenda.WinApp
             pnlRegistros.Controls.Clear();
             pnlRegistros.Controls.Add(listagemContato);
         }
+
+
     }
 }

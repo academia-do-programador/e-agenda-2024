@@ -1,5 +1,6 @@
 ﻿using eAgenda.WinApp.ModuloCompromisso;
 using eAgenda.WinApp.ModuloContato;
+using eAgenda.WinApp.ModuloDespesa;
 using eAgenda.WinApp.ModuloTarefa;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -11,6 +12,7 @@ namespace eAgenda.WinApp.Compartilhado
         public List<Contato> Contatos { get; set; }
         public List<Compromisso> Compromissos { get; set; }
         public List<Tarefa> Tarefas { get; set; }
+        public List<Categoria> Categorias { get; set; }
 
         private string caminho = $"C:\\temp\\eAgenda\\dados.json";
 
@@ -21,6 +23,8 @@ namespace eAgenda.WinApp.Compartilhado
             Compromissos = new List<Compromisso>();
 
             Tarefas = new List<Tarefa>();
+
+            Categorias = new List<Categoria>();
         }
 
         public ContextoDados(bool carregarDados) : this()
@@ -69,6 +73,8 @@ namespace eAgenda.WinApp.Compartilhado
             Compromissos = ctx.Compromissos;
 
             Tarefas = ctx.Tarefas;
+
+            Categorias = ctx.Categorias;
         }
     }
 }
