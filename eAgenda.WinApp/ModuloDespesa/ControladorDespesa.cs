@@ -50,7 +50,46 @@ namespace eAgenda.WinApp.ModuloDespesa
 
         public override void Editar()
         {
-            throw new NotImplementedException();
+            TelaDespesaForm telaDespesa = new TelaDespesaForm();
+
+            List<Categoria> categoriasCadastradas = repositorioCategoria.SelecionarTodos();
+
+            telaDespesa.CarregarCategorias(categoriasCadastradas);
+
+            int idSelecionado = tabelaDespesas.ObterRegistroSelecionado();
+
+            Despesa despesaSelecionada =
+                repositorioDespesa.SelecionarPorId(idSelecionado);
+
+            if (despesaSelecionada == null)
+            {
+                MessageBox.Show(
+                    "Não é possível realizar esta ação sem um registro selecionado.",
+                    "Aviso",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+                return;
+            }
+
+            telaDespesa.Despesa = despesaSelecionada;
+
+            DialogResult resultado = telaDespesa.ShowDialog();
+
+            if (resultado != DialogResult.OK)
+                return;
+
+            Despesa despesaEditada = telaDespesa.Despesa;
+
+            repositorioDespesa.Editar(despesaSelecionada.Id, despesaEditada);
+
+            repositorioDespesa.AtualizarCategorias(despesaSelecionada, telaDespesa.CategoriasSelecionadas, telaDespesa.CategoriasDesmarcadas);
+
+            CarregarDespesas();
+
+            TelaPrincipalForm
+                .Instancia
+                .AtualizarRodape($"O registro \"{despesaEditada.Descricao}\" foi criado com sucesso!");
         }
 
         public override void Excluir()

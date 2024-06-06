@@ -19,6 +19,17 @@ namespace eAgenda.WinApp.ModuloDespesa
             contexto.Gravar();
         }
 
+        public void AtualizarCategorias(Despesa despesaSelecionada, List<Categoria> categoriasSelecionadas, List<Categoria> categoriasDesmarcadas)
+        {
+            foreach (Categoria categoria in categoriasSelecionadas)
+                despesaSelecionada.AtribuirCategoria(categoria);
+
+            foreach (Categoria categoria in categoriasDesmarcadas)
+                despesaSelecionada.RemoverCategoria(categoria);
+
+            contexto.Gravar();
+        }
+
         protected override List<Despesa> ObterRegistros()
         {
             return contexto.Despesas;

@@ -9,5 +9,6 @@
         List<Despesa> SelecionarTodos();
 
         void AdicionarCategorias(Despesa despesa, List<Categoria> categorias);
+        void AtualizarCategorias(Despesa despesaSelecionada, List<Categoria> categoriasSelecionadas, List<Categoria> categoriasDesmarcadas);
     }
 }

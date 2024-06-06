@@ -22,6 +22,11 @@ namespace eAgenda.WinApp.ModuloDespesa
                 grid.Rows.Add(despesa.Id, despesa.Descricao, despesa.Valor, despesa.Data);
         }
 
+        public int ObterRegistroSelecionado()
+        {
+            return grid.SelecionarId();
+        }
+
         private DataGridViewColumn[] ObterColunas()
         {
             var colunas = new DataGridViewColumn[]

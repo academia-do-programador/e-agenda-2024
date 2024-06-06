@@ -7,6 +7,26 @@
         public Despesa Despesa
         {
             get { return despesa; }
+            set
+            {
+                txtId.Text = value.Id.ToString();
+                txtDescricao.Text = value.Descricao;
+                txtValor.Text = value.Valor.ToString();
+                txtData.Value = value.Data;
+                cmbFormaPgto.SelectedItem = value.FormaPagamento;
+
+                int contadorCategoriaSelecionada = 0;
+
+                for (int i = 0; i < listCategorias.Items.Count; i++)
+                {
+                    Categoria categoria = (Categoria)listCategorias.Items[i];
+
+                    if (value.Categorias.Any(c => c.Id == categoria.Id))
+                        listCategorias.SetItemChecked(contadorCategoriaSelecionada, true);
+
+                    contadorCategoriaSelecionada++;
+                }
+            }
         }
 
         public List<Categoria> CategoriasSelecionadas

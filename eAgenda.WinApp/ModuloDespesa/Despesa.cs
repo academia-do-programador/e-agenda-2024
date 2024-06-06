@@ -28,12 +28,25 @@ namespace eAgenda.WinApp.ModuloDespesa
 
         public override void AtualizarRegistro(EntidadeBase novoRegistro)
         {
-            throw new NotImplementedException();
+            Despesa despesaAtualizada = (Despesa)novoRegistro;
+
+            this.Descricao = despesaAtualizada.Descricao;
+            this.Valor = despesaAtualizada.Valor;
+            this.Data = despesaAtualizada.Data;
+            this.FormaPagamento = despesaAtualizada.FormaPagamento;
         }
 
         public override List<string> Validar()
         {
-            return new List<string>();
+            List<string> erros = new List<string>();
+
+            if (string.IsNullOrEmpty(Descricao.Trim()))
+                erros.Add("O campo \"descricao\" é obrigatório");
+
+            if (Valor < 0)
+                erros.Add("O campo \"valor\" não pode ser menor que zero.");
+
+            return erros;
         }
 
         public void AtribuirCategoria(Categoria categoria)
@@ -44,6 +57,17 @@ namespace eAgenda.WinApp.ModuloDespesa
             Categorias.Add(categoria);
 
             categoria.RegistrarDespesa(this);
+        }
+
+        public void RemoverCategoria(Categoria categoria)
+        {
+            if (!Categorias.Any(c => c.Id == categoria.Id))
+                return;
+
+            Categoria categoriaSelecionada = Categorias.Find(c => c.Id == categoria.Id);
+            Categorias.Remove(categoriaSelecionada);
+
+            categoria.RemoverDespesa(this);
         }
     }
 }

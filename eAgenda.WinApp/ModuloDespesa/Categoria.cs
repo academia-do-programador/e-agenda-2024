@@ -28,6 +28,18 @@ namespace eAgenda.WinApp.ModuloDespesa
             despesa.AtribuirCategoria(this);
         }
 
+        public void RemoverDespesa(Despesa despesa)
+        {
+            if (!Despesas.Any(d => d.Id == despesa.Id))
+                return;
+
+            Despesa despesaSelecionada = Despesas.Find(d => d.Id == despesa.Id);
+
+            Despesas.Remove(despesaSelecionada);
+
+            despesa.RemoverCategoria(this);
+        }
+
         public override void AtualizarRegistro(EntidadeBase novoRegistro)
         {
             Categoria categoriaAtualizada = (Categoria)novoRegistro;
