@@ -11,6 +11,7 @@ namespace eAgenda.WinApp.ModuloContato
             enderecoBanco = "Data Source=(LocalDB)\\MSSQLLocalDB;Initial Catalog=eAgendaDb;Integrated Security=True;Pooling=False";
         }
 
+
         public void Cadastrar(Contato novoContato)
         {
             string sqlInserir =

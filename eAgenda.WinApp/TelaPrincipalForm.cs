@@ -29,7 +29,7 @@ namespace eAgenda.WinApp
             contexto = new ContextoDados(carregarDados: true);
 
             repositorioContato = new RepositorioContatoEmSql();
-            repositorioCompromisso = new RepositorioCompromissoEmArquivo(contexto);
+            repositorioCompromisso = new RepositorioCompromissoEmSql();
             repositorioTarefa = new RepositorioTarefaEmArquivo(contexto);
             repositorioCategoria = new RepositorioCategoriaEmArquivo(contexto);
             repositorioDespesa = new RepositorioDespesaEmArquivo(contexto);
