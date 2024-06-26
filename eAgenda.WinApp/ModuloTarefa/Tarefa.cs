@@ -11,12 +11,13 @@ namespace eAgenda.WinApp.ModuloTarefa
 
         public List<ItemTarefa> Itens { get; set; }
 
+        private decimal percentualConcluido = 0.0m;
         public decimal PercentualConcluido
         {
             get
             {
                 if (Itens.Count == 0)
-                    return 0;
+                    return percentualConcluido;
 
                 int qtdConcluidos = Itens.Count(i => i.Concluido);
 
@@ -24,20 +25,20 @@ namespace eAgenda.WinApp.ModuloTarefa
 
                 return Math.Round(percentualBase, 2);
             }
+            set { percentualConcluido = value; }
         }
 
         public Tarefa()
         {
+            Itens = new List<ItemTarefa>();
         }
 
-        public Tarefa(string titulo, PrioridadeTarefaEnum prioridade)
+        public Tarefa(string titulo, PrioridadeTarefaEnum prioridade) : this()
         {
             Titulo = titulo;
             Prioridade = prioridade;
             DataCriacao = DateTime.Now;
             DataConclusao = DateTime.MinValue;
-
-            Itens = new List<ItemTarefa>();
         }
 
         public bool AdicionarItem(ItemTarefa item)
@@ -82,6 +83,7 @@ namespace eAgenda.WinApp.ModuloTarefa
 
             Titulo = nova.Titulo;
             Prioridade = nova.Prioridade;
+            PercentualConcluido = nova.PercentualConcluido;
         }
 
         public override List<string> Validar()
