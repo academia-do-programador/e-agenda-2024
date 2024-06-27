@@ -2,7 +2,7 @@
 
 namespace eAgenda.WinApp.ModuloDespesa.ModuloCategoria
 {
-    public class RepositorioCategoriaEmSql
+    public class RepositorioCategoriaEmSql : IRepositorioCategoria
     {
         private string enderecoBanco;
 
