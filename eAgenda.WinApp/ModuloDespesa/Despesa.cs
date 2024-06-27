@@ -70,5 +70,10 @@ namespace eAgenda.WinApp.ModuloDespesa
 
             categoria.RemoverDespesa(this);
         }
+
+        public bool ContemCategoria(Categoria categoria)
+        {
+            return Categorias.Any(c => c.Id == categoria.Id);
+        }
     }
 }

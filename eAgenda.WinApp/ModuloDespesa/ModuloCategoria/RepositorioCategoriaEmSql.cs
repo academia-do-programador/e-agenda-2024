@@ -156,6 +156,12 @@ namespace eAgenda.WinApp.ModuloDespesa.ModuloCategoria
             return categorias;
         }
 
+        private void ConfigurarParametrosCategoria(Categoria categoria, SqlCommand comando)
+        {
+            comando.Parameters.AddWithValue("ID", categoria.Id);
+            comando.Parameters.AddWithValue("TITULO", categoria.Titulo);
+        }
+
         private Categoria ConverterParaCategoria(SqlDataReader leitorCategoria)
         {
             int numero = Convert.ToInt32(leitorCategoria["ID"]);
@@ -168,12 +174,6 @@ namespace eAgenda.WinApp.ModuloDespesa.ModuloCategoria
             };
 
             return categoria;
-        }
-
-        private void ConfigurarParametrosCategoria(Categoria categoria, SqlCommand comando)
-        {
-            comando.Parameters.AddWithValue("ID", categoria.Id);
-            comando.Parameters.AddWithValue("TITULO", categoria.Titulo);
         }
 
         private Despesa ConverterParaDespesa(SqlDataReader leitorDespesa)

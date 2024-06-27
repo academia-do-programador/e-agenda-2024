@@ -65,6 +65,37 @@ namespace eAgenda.WinApp.ModuloDespesa
 		            [TBDESPESA]
 		        WHERE
                     [ID] = @ID";
+
+        private const string sqlAdicionarCategoriaNaDespesa =
+            @"INSERT INTO [TBDESPESA_TBCATEGORIA]
+            (
+                [DESPESA_ID],
+                [CATEGORIA_ID]
+            )
+            VALUES
+            (
+                @DESPESA_ID,
+                @CATEGORIA_ID
+            )";
+
+        private const string sqlSelecionarCategoriasDaDespesa =
+            @"SELECT
+                CAT.[ID],
+                CAT.[TITULO]
+            FROM
+                [TBCATEGORIA] AS CAT INNER JOIN
+                [TBDESPESA_TBCATEGORIA] AS DC
+            ON
+                CAT.[ID] = DC.[CATEGORIA_ID]
+            WHERE
+                DC.[DESPESA_ID] = @DESPESA_ID";
+
+        private const string sqlRemoverCategoriaDaDespesa =
+            @"DELETE FROM 
+                [TBDESPESA_TBCATEGORIA]
+            WHERE
+                [CATEGORIA_ID] = @CATEGORIA_ID AND
+                [DESPESA_ID] = @DESPESA_ID";
         #endregion
 
         public void Cadastrar(Despesa novaDespesa)
@@ -110,6 +141,8 @@ namespace eAgenda.WinApp.ModuloDespesa
         {
             Despesa despesa = SelecionarPorId(id);
 
+            RemoverCategorias(despesa, despesa.Categorias);
+
             SqlConnection conexaoComBanco = new SqlConnection(enderecoBanco);
 
             SqlCommand comandoExclusao = new SqlCommand(sqlExcluir, conexaoComBanco);
@@ -145,6 +178,9 @@ namespace eAgenda.WinApp.ModuloDespesa
             if (leitorDespesa.Read())
                 despesa = ConverterParaDespesa(leitorDespesa);
 
+            if (despesa != null)
+                CarregarCategorias(despesa);
+
             conexaoComBanco.Close();
 
             return despesa;
@@ -176,32 +212,78 @@ namespace eAgenda.WinApp.ModuloDespesa
 
         public void AdicionarCategorias(Despesa despesa, List<Categoria> categorias)
         {
-            throw new NotImplementedException();
+            foreach (Categoria cat in categorias)
+            {
+                if (despesa.ContemCategoria(cat))
+                    continue;
+
+                despesa.AtribuirCategoria(cat);
+
+                SqlConnection conexaoComBanco = new SqlConnection(enderecoBanco);
+
+                SqlCommand comandoInsercao = new SqlCommand(sqlAdicionarCategoriaNaDespesa, conexaoComBanco);
+
+                comandoInsercao.Parameters.AddWithValue("DESPESA_ID", despesa.Id);
+                comandoInsercao.Parameters.AddWithValue("CATEGORIA_ID", cat.Id);
+
+                conexaoComBanco.Open();
+
+                comandoInsercao.ExecuteNonQuery();
+
+                conexaoComBanco.Close();
+            }
         }
 
         public void AtualizarCategorias(Despesa despesaSelecionada, List<Categoria> categoriasSelecionadas, List<Categoria> categoriasDesmarcadas)
         {
-            throw new NotImplementedException();
+            AdicionarCategorias(despesaSelecionada, categoriasSelecionadas);
+
+            RemoverCategorias(despesaSelecionada, categoriasDesmarcadas);
         }
 
-        private Despesa ConverterParaDespesa(SqlDataReader leitorDespesa)
+        private void RemoverCategorias(Despesa despesaSelecionada, List<Categoria> categoriasDesmarcadas)
         {
-            var numero = Convert.ToInt32(leitorDespesa["ID"]);
-            var descricao = Convert.ToString(leitorDespesa["DESCRICAO"]);
-            var valor = Convert.ToDecimal(leitorDespesa["VALOR"]);
-            var data = Convert.ToDateTime(leitorDespesa["DATA"]);
-            var formaPgto = (FormaPagamentoEnum)leitorDespesa["FORMAPAGAMENTO"];
-
-            var despesa = new Despesa
+            for (int i = 0; i < categoriasDesmarcadas.Count; i++)
             {
-                Id = numero,
-                Descricao = descricao,
-                Valor = valor,
-                Data = data,
-                FormaPagamento = formaPgto
-            };
+                Categoria cat = categoriasDesmarcadas[i];
 
-            return despesa;
+                despesaSelecionada.RemoverCategoria(cat);
+
+                SqlConnection conexaoComBanco = new SqlConnection(enderecoBanco);
+
+                SqlCommand comandoExclusao = new SqlCommand(sqlRemoverCategoriaDaDespesa, conexaoComBanco);
+
+                comandoExclusao.Parameters.AddWithValue("CATEGORIA_ID", cat.Id);
+                comandoExclusao.Parameters.AddWithValue("DESPESA_ID", despesaSelecionada.Id);
+
+                conexaoComBanco.Open();
+
+                comandoExclusao.ExecuteNonQuery();
+
+                conexaoComBanco.Close();
+            }
+        }
+
+        private void CarregarCategorias(Despesa despesa)
+        {
+            SqlConnection conexaoComBanco = new SqlConnection(enderecoBanco);
+
+            SqlCommand comandoSelecao = new SqlCommand(sqlSelecionarCategoriasDaDespesa, conexaoComBanco);
+
+            comandoSelecao.Parameters.AddWithValue("DESPESA_ID", despesa.Id);
+
+            conexaoComBanco.Open();
+
+            SqlDataReader leitorCategoria = comandoSelecao.ExecuteReader();
+
+            while (leitorCategoria.Read())
+            {
+                Categoria categoria = ConverterParaCategoria(leitorCategoria);
+
+                despesa.AtribuirCategoria(categoria);
+            }
+
+            conexaoComBanco.Close();
         }
 
         private void ConfigurarParametrosDespesa(Despesa despesa, SqlCommand comando)
@@ -211,6 +293,40 @@ namespace eAgenda.WinApp.ModuloDespesa
             comando.Parameters.AddWithValue("VALOR", despesa.Valor);
             comando.Parameters.AddWithValue("DATA", despesa.Data);
             comando.Parameters.AddWithValue("FORMAPAGAMENTO", despesa.FormaPagamento);
+        }
+
+        private Despesa ConverterParaDespesa(SqlDataReader leitorDespesa)
+        {
+            int id = Convert.ToInt32(leitorDespesa["ID"]);
+            string descricao = Convert.ToString(leitorDespesa["DESCRICAO"]);
+            decimal valor = Convert.ToDecimal(leitorDespesa["VALOR"]);
+            DateTime data = Convert.ToDateTime(leitorDespesa["DATA"]);
+            FormaPagamentoEnum formaPgto = (FormaPagamentoEnum)leitorDespesa["FORMAPAGAMENTO"];
+
+            Despesa despesa = new Despesa
+            {
+                Id = id,
+                Descricao = descricao,
+                Valor = valor,
+                Data = data,
+                FormaPagamento = formaPgto
+            };
+
+            return despesa;
+        }
+
+        private Categoria ConverterParaCategoria(SqlDataReader leitorCategoria)
+        {
+            int numero = Convert.ToInt32(leitorCategoria["ID"]);
+            string titulo = Convert.ToString(leitorCategoria["TITULO"]);
+
+            Categoria categoria = new Categoria
+            {
+                Id = numero,
+                Titulo = titulo
+            };
+
+            return categoria;
         }
     }
 }

@@ -27,13 +27,13 @@ namespace eAgenda.WinApp
             lblTipoCadastro.Text = string.Empty;
             Instancia = this;
 
-            contexto = new ContextoDados(carregarDados: true);
+            //contexto = new ContextoDados(carregarDados: true);
 
             repositorioContato = new RepositorioContatoEmSql();
             repositorioCompromisso = new RepositorioCompromissoEmSql();
             repositorioTarefa = new RepositorioTarefaEmSql();
-            repositorioCategoria = new RepositorioCategoriaEmArquivo(contexto);
-            repositorioDespesa = new RepositorioDespesaEmArquivo(contexto);
+            repositorioCategoria = new RepositorioCategoriaEmSql();
+            repositorioDespesa = new RepositorioDespesaEmSql();
         }
 
         public void AtualizarRodape(string texto)
