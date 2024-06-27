@@ -9,7 +9,7 @@ namespace eAgenda.WinApp.ModuloDespesa
 
         public RepositorioDespesaEmSql()
         {
-            enderecoBanco = "Data Source=(LocalDB)\\MSSQLLocalDB;Initial Catalog=eAgendaTestDb;Integrated Security=True;Pooling=False";
+            enderecoBanco = "Data Source=(LocalDB)\\MSSQLLocalDB;Initial Catalog=eAgendaDb;Integrated Security=True;Pooling=False";
         }
 
         #region Sql Queries
