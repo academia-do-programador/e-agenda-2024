@@ -1,4 +1,6 @@
-﻿namespace eAgenda.WinApp.ModuloDespesa
+﻿using eAgenda.WinApp.ModuloDespesa.ModuloCategoria;
+
+namespace eAgenda.WinApp.ModuloDespesa
 {
     public interface IRepositorioDespesa
     {

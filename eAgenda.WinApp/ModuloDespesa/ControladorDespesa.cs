@@ -1,4 +1,5 @@
 ﻿using eAgenda.WinApp.Compartilhado;
+using eAgenda.WinApp.ModuloDespesa.ModuloCategoria;
 
 namespace eAgenda.WinApp.ModuloDespesa
 {
@@ -89,12 +90,45 @@ namespace eAgenda.WinApp.ModuloDespesa
 
             TelaPrincipalForm
                 .Instancia
-                .AtualizarRodape($"O registro \"{despesaEditada.Descricao}\" foi criado com sucesso!");
+                .AtualizarRodape($"O registro \"{despesaEditada.Descricao}\" foi editado com sucesso!");
         }
 
         public override void Excluir()
         {
-            throw new NotImplementedException();
+
+            int idSelecionado = tabelaDespesas.ObterRegistroSelecionado();
+
+            Despesa despesaSelecionada =
+                repositorioDespesa.SelecionarPorId(idSelecionado);
+
+            if (despesaSelecionada == null)
+            {
+                MessageBox.Show(
+                    "Não é possível realizar esta ação sem um registro selecionado.",
+                    "Aviso",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+                return;
+            }
+
+            DialogResult resposta = MessageBox.Show(
+                $"Você deseja realmente excluir o registro \"{despesaSelecionada.Descricao}\"?",
+                "Confirmar Exclusão",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning
+            );
+
+            if (resposta != DialogResult.Yes)
+                return;
+
+            repositorioDespesa.Excluir(despesaSelecionada.Id);
+
+            CarregarDespesas();
+
+            TelaPrincipalForm
+                .Instancia
+                .AtualizarRodape($"O registro \"{despesaSelecionada.Descricao}\" foi excluído com sucesso!");
         }
 
         public override UserControl ObterListagem()

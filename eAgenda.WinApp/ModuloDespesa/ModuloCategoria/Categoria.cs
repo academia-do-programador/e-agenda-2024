@@ -1,6 +1,6 @@
 ﻿using eAgenda.ConsoleApp.Compartilhado;
 
-namespace eAgenda.WinApp.ModuloDespesa
+namespace eAgenda.WinApp.ModuloDespesa.ModuloCategoria
 {
     public class Categoria : EntidadeBase
     {
@@ -15,7 +15,7 @@ namespace eAgenda.WinApp.ModuloDespesa
 
         public Categoria(string titulo)
         {
-            this.Titulo = titulo;
+            Titulo = titulo;
         }
 
         public void RegistrarDespesa(Despesa despesa)
@@ -44,7 +44,7 @@ namespace eAgenda.WinApp.ModuloDespesa
         {
             Categoria categoriaAtualizada = (Categoria)novoRegistro;
 
-            this.Titulo = categoriaAtualizada.Titulo;
+            Titulo = categoriaAtualizada.Titulo;
         }
 
         public override List<string> Validar()

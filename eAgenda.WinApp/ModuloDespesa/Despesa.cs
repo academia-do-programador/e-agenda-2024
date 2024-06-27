@@ -1,4 +1,5 @@
 ﻿using eAgenda.ConsoleApp.Compartilhado;
+using eAgenda.WinApp.ModuloDespesa.ModuloCategoria;
 
 namespace eAgenda.WinApp.ModuloDespesa
 {

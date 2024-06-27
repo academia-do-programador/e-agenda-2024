@@ -1,6 +1,6 @@
 ﻿using eAgenda.WinApp.Compartilhado;
 
-namespace eAgenda.WinApp.ModuloDespesa
+namespace eAgenda.WinApp.ModuloDespesa.ModuloCategoria
 {
     public class RepositorioCategoriaEmArquivo : RepositorioBaseEmArquivo<Categoria>, IRepositorioCategoria
     {

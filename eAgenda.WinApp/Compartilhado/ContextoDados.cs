@@ -1,6 +1,7 @@
 ﻿using eAgenda.WinApp.ModuloCompromisso;
 using eAgenda.WinApp.ModuloContato;
 using eAgenda.WinApp.ModuloDespesa;
+using eAgenda.WinApp.ModuloDespesa.ModuloCategoria;
 using eAgenda.WinApp.ModuloTarefa;
 using System.Text.Json;
 using System.Text.Json.Serialization;

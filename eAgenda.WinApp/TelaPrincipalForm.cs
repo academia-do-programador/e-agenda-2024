@@ -2,6 +2,7 @@ using eAgenda.WinApp.Compartilhado;
 using eAgenda.WinApp.ModuloCompromisso;
 using eAgenda.WinApp.ModuloContato;
 using eAgenda.WinApp.ModuloDespesa;
+using eAgenda.WinApp.ModuloDespesa.ModuloCategoria;
 using eAgenda.WinApp.ModuloTarefa;
 
 namespace eAgenda.WinApp
