@@ -1,5 +1,7 @@
 ﻿
-using eAgenda.WinApp.Compartilhado;
+using eAgenda.Dominio.Compartilhado.Extensions;
+using eAgenda.Dominio.ModuloContato;
+using eAgenda.WinApp.Compartilhado.Extensions;
 
 namespace eAgenda.WinApp.ModuloContato
 {

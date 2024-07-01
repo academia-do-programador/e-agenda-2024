@@ -1,4 +1,6 @@
-﻿using eAgenda.WinApp.Compartilhado;
+﻿using eAgenda.Dominio.Compartilhado;
+using eAgenda.Dominio.ModuloTarefa;
+using eAgenda.WinApp.Compartilhado;
 
 namespace eAgenda.WinApp.ModuloTarefa
 {

@@ -1,4 +1,5 @@
-﻿using eAgenda.WinApp.Compartilhado;
+﻿using eAgenda.Dominio.ModuloCompromisso;
+using eAgenda.WinApp.Compartilhado.Extensions;
 
 namespace eAgenda.WinApp.ModuloCompromisso
 {

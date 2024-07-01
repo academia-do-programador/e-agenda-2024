@@ -1,3 +1,14 @@
+using eAgenda.Dominio.Compartilhado;
+using eAgenda.Dominio.ModuloCategoria;
+using eAgenda.Dominio.ModuloCompromisso;
+using eAgenda.Dominio.ModuloContato;
+using eAgenda.Dominio.ModuloDespesa;
+using eAgenda.Dominio.ModuloTarefa;
+using eAgenda.Infra.Sql.ModuloCompromisso;
+using eAgenda.Infra.Sql.ModuloContato;
+using eAgenda.Infra.Sql.ModuloDespesa;
+using eAgenda.Infra.Sql.ModuloDespesa.ModuloCategoria;
+using eAgenda.Infra.Sql.ModuloTarefa;
 using eAgenda.WinApp.Compartilhado;
 using eAgenda.WinApp.ModuloCompromisso;
 using eAgenda.WinApp.ModuloContato;
@@ -10,8 +21,6 @@ namespace eAgenda.WinApp
     public partial class TelaPrincipalForm : Form
     {
         ControladorBase controlador;
-
-        ContextoDados contexto;
 
         IRepositorioContato repositorioContato;
         IRepositorioCompromisso repositorioCompromisso;
@@ -26,8 +35,6 @@ namespace eAgenda.WinApp
             InitializeComponent();
             lblTipoCadastro.Text = string.Empty;
             Instancia = this;
-
-            //contexto = new ContextoDados(carregarDados: true);
 
             repositorioContato = new RepositorioContatoEmSql();
             repositorioCompromisso = new RepositorioCompromissoEmSql();

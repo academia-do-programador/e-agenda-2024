@@ -1,4 +1,5 @@
-﻿using eAgenda.WinApp.ModuloContato;
+﻿using eAgenda.Dominio.ModuloCompromisso;
+using eAgenda.Dominio.ModuloContato;
 
 namespace eAgenda.WinApp.ModuloCompromisso
 {

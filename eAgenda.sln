@@ -3,7 +3,23 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34622.214
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eAgenda.WinApp", "eAgenda.WinApp\eAgenda.WinApp.csproj", "{49AABF59-6809-45CC-9B28-C60A26A17350}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eAgenda.WinApp", "eAgenda.WinApp\eAgenda.WinApp.csproj", "{49AABF59-6809-45CC-9B28-C60A26A17350}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1. Apresentação", "1. Apresentação", "{D13AFA78-194D-4E38-BED9-BACA13992F5C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2. Domínio", "2. Domínio", "{312C42B7-583B-4835-9F2E-8E6E368C6E97}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3. Infraestrutura", "3. Infraestrutura", "{FB4B4BC9-A6DC-496A-925B-63C063FB285F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eAgenda.Dominio", "eAgenda.Dominio\eAgenda.Dominio.csproj", "{042F3DAE-9504-415B-A66A-F25386924B31}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eAgenda.Infra.Sql", "eAgenda.Infra.Sql\eAgenda.Infra.Sql.csproj", "{53D581EA-B0C9-4F2F-9C8C-94D27248B329}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eAgenda.Infra.Arquivos", "eAgenda.Infra.Arquivos\eAgenda.Infra.Arquivos.csproj", "{6E66C64D-28B2-4807-A971-C4D60B8E9F72}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3.1. Arquivos", "3.1. Arquivos", "{007461C7-D7A7-4890-8062-12B16D0768B3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3.2. SQL", "3.2. SQL", "{BB9493B6-265C-41EF-A88F-22C367E3238A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,9 +31,29 @@ Global
 		{49AABF59-6809-45CC-9B28-C60A26A17350}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{49AABF59-6809-45CC-9B28-C60A26A17350}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{49AABF59-6809-45CC-9B28-C60A26A17350}.Release|Any CPU.Build.0 = Release|Any CPU
+		{042F3DAE-9504-415B-A66A-F25386924B31}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{042F3DAE-9504-415B-A66A-F25386924B31}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{042F3DAE-9504-415B-A66A-F25386924B31}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{042F3DAE-9504-415B-A66A-F25386924B31}.Release|Any CPU.Build.0 = Release|Any CPU
+		{53D581EA-B0C9-4F2F-9C8C-94D27248B329}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53D581EA-B0C9-4F2F-9C8C-94D27248B329}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53D581EA-B0C9-4F2F-9C8C-94D27248B329}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53D581EA-B0C9-4F2F-9C8C-94D27248B329}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E66C64D-28B2-4807-A971-C4D60B8E9F72}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E66C64D-28B2-4807-A971-C4D60B8E9F72}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E66C64D-28B2-4807-A971-C4D60B8E9F72}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E66C64D-28B2-4807-A971-C4D60B8E9F72}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{49AABF59-6809-45CC-9B28-C60A26A17350} = {D13AFA78-194D-4E38-BED9-BACA13992F5C}
+		{042F3DAE-9504-415B-A66A-F25386924B31} = {312C42B7-583B-4835-9F2E-8E6E368C6E97}
+		{53D581EA-B0C9-4F2F-9C8C-94D27248B329} = {BB9493B6-265C-41EF-A88F-22C367E3238A}
+		{6E66C64D-28B2-4807-A971-C4D60B8E9F72} = {007461C7-D7A7-4890-8062-12B16D0768B3}
+		{007461C7-D7A7-4890-8062-12B16D0768B3} = {FB4B4BC9-A6DC-496A-925B-63C063FB285F}
+		{BB9493B6-265C-41EF-A88F-22C367E3238A} = {FB4B4BC9-A6DC-496A-925B-63C063FB285F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5FA7A44A-C14D-4A92-8383-C55D27A016C9}

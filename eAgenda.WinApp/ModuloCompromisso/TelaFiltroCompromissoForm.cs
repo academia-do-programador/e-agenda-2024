@@ -1,4 +1,6 @@
-﻿namespace eAgenda.WinApp.ModuloCompromisso
+﻿using eAgenda.Dominio.ModuloCompromisso;
+
+namespace eAgenda.WinApp.ModuloCompromisso
 {
     public partial class TelaFiltroCompromissoForm : Form
     {

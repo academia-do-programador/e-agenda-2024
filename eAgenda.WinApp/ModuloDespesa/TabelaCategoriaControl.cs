@@ -1,5 +1,6 @@
-﻿using eAgenda.WinApp.Compartilhado;
-using eAgenda.WinApp.ModuloDespesa.ModuloCategoria;
+﻿using eAgenda.Dominio.Compartilhado.Extensions;
+using eAgenda.Dominio.ModuloCategoria;
+using eAgenda.WinApp.Compartilhado.Extensions;
 
 namespace eAgenda.WinApp.ModuloDespesa
 {
